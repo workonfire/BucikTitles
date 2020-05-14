@@ -21,7 +21,7 @@ titles:
     1:
       wzium:
         title: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
-        permission: "bucik.titles.wzium"
+        permission: "bucik.titles.title.wzium"
         gui-item:
           material: FEATHER
           name: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
@@ -30,7 +30,7 @@ titles:
           - "&6Róbmy wzium!"
       testowy:
         title: "&6[&e&l&oTestowy&6]"
-        permission: "bucik.titles.testowy"
+        permission: "bucik.titles.title.testowy"
         gui-item:
           material: BEDROCK
           name: "&6[&e&l&oTestowy&6]"
@@ -38,7 +38,7 @@ titles:
     2:
       test_title:
         title: "&9[&f&l&oTestTitle&9]"
-        permission: "bucik.titles.test_title"
+        permission: "bucik.titles.title.test_title"
         gui-item:
           material: WOODEN_AXE
           name: "&9[&f&l&oTestTitle&9]"
