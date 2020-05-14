@@ -158,8 +158,11 @@ public class GUIManager {
                 player.sendMessage(Main.prefix + Main.formatColors(ConfigManager.config.getString("language.config-load-error-debug-header")));
                 StringWriter sw = new StringWriter();
                 e.printStackTrace(new PrintWriter(sw));
+                e.printStackTrace();
                 String exceptionAsString = sw.toString();
-                player.sendMessage("§c" + exceptionAsString);
+                exceptionAsString = exceptionAsString.substring(0, Math.min(exceptionAsString.length(), 256));
+                player.sendMessage("§c" + exceptionAsString.replaceAll("\u0009", "    ").replaceAll("\r", "\n"));
+                player.sendMessage(Main.prefix + Main.formatColors(ConfigManager.config.getString("language.debug-more-info-in-console")));
             }
         }
 

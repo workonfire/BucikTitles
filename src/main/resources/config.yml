@@ -8,8 +8,9 @@ language:
   cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
   plugin-reloaded: "&aKonfiguracja została przeładowana."
   subcommand-does-not-exist: "&cTa podkomenda nie istnieje."
-  config-load-error: "&cWystąpił problem podczas wczytywania pliku konfiguracyjnego. Upewnij się, że wszystkie pola posiadają poprawne wartości."
+  config-load-error: "&4Wystąpił problem podczas wczytywania pliku konfiguracyjnego. &cUpewnij się, że wszystkie pola posiadają &c&npoprawne&c wartości."
   config-load-error-debug-header: "&7Informacje deweloperskie (Java Stack Trace):"
+  debug-more-info-in-console: "&7&oBy uzyskać pełną treść błędu, zajrzyj do konsoli."
 
 options:
   play-sound-after-setting: true
