@@ -115,7 +115,7 @@ public class GUIManager {
         if (ConfigManager.config.getString("gui.clear-titles-button.name") != null)
             take_off_button_meta.setDisplayName(Main.formatColors(ConfigManager.config.getString("gui.clear-titles-button.name")));
         take_off_button_item.setItemMeta(take_off_button_meta);
-        take_off_button.addItem(new GuiItem(take_off_button_item, event -> Main.takeOff(player)));
+        take_off_button.addItem(new GuiItem(take_off_button_item, event -> Main.takeOff(player, false)));
         gui.addPane(take_off_button);
 
         /* Showing the titles */

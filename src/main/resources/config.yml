@@ -2,8 +2,8 @@
 
 language:
   plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r "
-  title-set: "&aTytuł został pomyślnie ustawiony!"
-  title-removed: "&aTytuł został usunięty!"
+  title-set: "&aTytuł został pomyślnie ustawiony! Mogą go teraz zobaczyć inni nad twoją głową!"
+  title-removed: "&aTytuł został usunięty znad twojej głowy!"
   no-permission: "&cBrak uprawnień!"
   cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
   plugin-reloaded: "&aKonfiguracja została przeładowana."
@@ -18,7 +18,7 @@ gui:
       - "TestLore1"
       - "TestLore2"
   clear-titles-button:
-    name: "&cUsuń wszystkie tytuły"
+    name: "&cUsuń wybrany tytuł"
   previous-page-button:
     name: "&4< &cWróć"
   next-page-button:
@@ -27,6 +27,7 @@ gui:
 misc:
   play-sound-after-setting: true
   play-sound-after-clear: true
+  clear-title-on-player-quit: false
 
 # INFO: One GUI page can handle up to 28 titles.
 

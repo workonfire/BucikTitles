@@ -8,9 +8,12 @@ import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Main extends JavaPlugin {
+public final class Main extends JavaPlugin implements Listener {
     public static Main plugin;
     public static String prefix;
 
@@ -27,6 +30,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         plugin.saveDefaultConfig();
+        getServer().getPluginManager().registerEvents(plugin, plugin);
         prefix = formatColors(ConfigManager.config.getString("language.plugin-prefix"));
         System.out.println(prefix + "§fBucikTitles by Buty935. Discord: workonfire#8262");
         getCommand("titles").setTabCompleter(new TabCompletion());
@@ -51,12 +55,14 @@ public final class Main extends JavaPlugin {
      * Removes the TAB above name from player.
      * @param player Player representation
      */
-    public static void takeOff(Player player) {
+    public static void takeOff(Player player, boolean silent) {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + player.getName() + " abovename");
-        player.closeInventory();
-        player.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.title-removed")));
-        if (ConfigManager.config.getBoolean("misc.play-sound-after-clear"))
-            player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
+        if (!silent) {
+            player.closeInventory();
+            player.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.title-removed")));
+            if (ConfigManager.config.getBoolean("misc.play-sound-after-clear"))
+                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
+        }
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -84,5 +90,10 @@ public final class Main extends JavaPlugin {
             else sender.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.no-permission")));
         }
         return true;
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        if (ConfigManager.config.getBoolean("misc.clear-title-on-player-quit")) takeOff(event.getPlayer(), true);
     }
 }
