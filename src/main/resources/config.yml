@@ -8,6 +8,14 @@ language:
   cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
   plugin-reloaded: "&aKonfiguracja została przeładowana."
   subcommand-does-not-exist: "&cTa podkomenda nie istnieje."
+  config-load-error: "&cWystąpił problem podczas wczytywania pliku konfiguracyjnego. Upewnij się, że wszystkie pola posiadają poprawne wartości."
+  config-load-error-debug-header: "&7Informacje deweloperskie (Java Stack Trace):"
+
+options:
+  play-sound-after-setting: true
+  play-sound-after-clear: true
+  clear-title-on-player-quit: false
+  debug: false
 
 gui:
   title: "&0>>> &lTYTUŁY &0<<<"
@@ -23,11 +31,6 @@ gui:
     name: "&4< &cWróć"
   next-page-button:
     name: "&aDalej &2>"
-
-misc:
-  play-sound-after-setting: true
-  play-sound-after-clear: true
-  clear-title-on-player-quit: false
 
 # INFO: One GUI page can handle up to 28 titles.
 

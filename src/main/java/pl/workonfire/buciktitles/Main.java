@@ -47,7 +47,7 @@ public final class Main extends JavaPlugin implements Listener {
         TABAPI.setValuePermanently(player.getUniqueId(), EnumProperty.ABOVENAME, title);
         player.closeInventory();
         player.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.title-set")));
-        if (ConfigManager.config.getBoolean("misc.play-sound-after-setting"))
+        if (ConfigManager.config.getBoolean("options.play-sound-after-setting"))
             player.playSound(player.getLocation(), Sound.ENTITY_LLAMA_SWAG, 1.0F, 1.0F);
     }
 
@@ -60,7 +60,7 @@ public final class Main extends JavaPlugin implements Listener {
         if (!silent) {
             player.closeInventory();
             player.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.title-removed")));
-            if (ConfigManager.config.getBoolean("misc.play-sound-after-clear"))
+            if (ConfigManager.config.getBoolean("options.play-sound-after-clear"))
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
         }
     }
@@ -94,6 +94,6 @@ public final class Main extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        if (ConfigManager.config.getBoolean("misc.clear-title-on-player-quit")) takeOff(event.getPlayer(), true);
+        if (ConfigManager.config.getBoolean("options.clear-title-on-player-quit")) takeOff(event.getPlayer(), true);
     }
 }
