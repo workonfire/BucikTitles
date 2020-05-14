@@ -161,7 +161,7 @@ public class GUIManager {
                 e.printStackTrace();
                 String exceptionAsString = sw.toString();
                 exceptionAsString = exceptionAsString.substring(0, Math.min(exceptionAsString.length(), 256));
-                player.sendMessage("§c" + exceptionAsString.replaceAll("\u0009", "    ").replaceAll("\r", "\n"));
+                player.sendMessage("§c" + exceptionAsString.replaceAll("\u0009", "    ").replaceAll("\r", "\n") + "...");
                 player.sendMessage(Main.prefix + Main.formatColors(ConfigManager.config.getString("language.debug-more-info-in-console")));
             }
         }

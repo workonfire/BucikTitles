@@ -1,12 +1,12 @@
 # BucikTitles
 
 A very simple plugin for showing titles above players heads.
-This plugin depends on [TAB](https://github.com/NEZNAMY/TAB).
+It depends on [TAB](https://github.com/NEZNAMY/TAB).
 
-This plugin supports multiple GUI pages. One page can contain up to 28 titles.
+BucikTitles supports multiple GUI pages. One page can contain up to 28 titles.
 You can set custom permissions for certain titles as well.
 
-### Permissions:
+### Permissions
 - `bucik.titles.reload`
 - `bucik.titles.open`
 
