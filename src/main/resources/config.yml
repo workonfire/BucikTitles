@@ -1,16 +1,16 @@
 # Config for BucikTitles
 
 language:
-  plugin-prefix: "§f§l[§c§lB§6§lu§e§lc§a§li§b§lk§3§lTitles§f§l]§r "
-  title-set: "§aTytuł został pomyślnie ustawiony!"
-  title-removed: "§aTytuł został usunięty!"
-  no-permission: "§cBrak uprawnień!"
-  cannot-open-from-console: "§cNie możesz wykonać tego polecenia z konsoli."
-  plugin-reloaded: "§aKonfiguracja została przeładowana."
-  subcommand-does-not-exist: "§cTa podkomenda nie istnieje."
+  plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r "
+  title-set: "&aTytuł został pomyślnie ustawiony!"
+  title-removed: "&aTytuł został usunięty!"
+  no-permission: "&cBrak uprawnień!"
+  cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
+  plugin-reloaded: "&aKonfiguracja została przeładowana."
+  subcommand-does-not-exist: "&cTa podkomenda nie istnieje."
 
 gui:
-  title: "§0>>> §lTYTUŁY §0<<<"
+  title: "&0>>> &lTYTUŁY &0<<<"
   outline-pane:
     item: BLUE_STAINED_GLASS_PANE
     name: "TestName"
@@ -18,11 +18,11 @@ gui:
       - "TestLore1"
       - "TestLore2"
   clear-titles-button:
-    name: "§cUsuń wszystkie tytuły"
+    name: "&cUsuń wszystkie tytuły"
   previous-page-button:
-    name: "§4< §cWróć"
+    name: "&4< &cWróć"
   next-page-button:
-    name: "§aDalej §2>"
+    name: "&aDalej &2>"
 
 misc:
   play-sound-after-setting: true

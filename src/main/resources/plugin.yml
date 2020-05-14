@@ -8,4 +8,4 @@ authors: [Buty935]
 description: A simple plugin for showing player titles
 commands:
   titles:
-    aliases: [tytuly]
+    aliases: [tytuly, buciktitles]
