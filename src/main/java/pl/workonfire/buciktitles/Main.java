@@ -44,7 +44,7 @@ public final class Main extends JavaPlugin {
         player.closeInventory();
         player.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.title-set")));
         if (ConfigManager.config.getBoolean("misc.play-sound-after-setting"))
-            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0F, 2.0F);
+            player.playSound(player.getLocation(), Sound.ENTITY_LLAMA_SWAG, 1.0F, 1.0F);
     }
 
     /**
@@ -56,7 +56,7 @@ public final class Main extends JavaPlugin {
         player.closeInventory();
         player.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.title-removed")));
         if (ConfigManager.config.getBoolean("misc.play-sound-after-clear"))
-            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0F, 0.5F);
+            player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
