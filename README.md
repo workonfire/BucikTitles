@@ -8,6 +8,7 @@ You can set custom permissions for certain titles as well.
 ### Permissions
 - `bucik.titles.reload`
 - `bucik.titles.open`
+- `bucik.titles.debug`
 
 ### Screenshots
 ![Screenshot 1](https://i.imgur.com/qu5rhT3.png)

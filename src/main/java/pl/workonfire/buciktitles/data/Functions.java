@@ -66,7 +66,7 @@ public class Functions {
      */
     public static void handleErrors(Player player, Exception exception) {
         player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("config-load-error")));
-        if (ConfigManager.config.getBoolean("options.debug")) {
+        if (ConfigManager.config.getBoolean("options.debug") && player.hasPermission("bucik.titles.debug")) {
             player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("config-load-error-debug-header")));
             StringWriter sw = new StringWriter();
             exception.printStackTrace(new PrintWriter(sw));
@@ -84,12 +84,12 @@ public class Functions {
     /**
      * Sets the TAB above name for player.
      * @param player Player representation
-     * @param title Title value from config
+     * @param titleID Title ID from config
      * @param page Page number where the title appears
      */
-    public static void setTitle(Player player, String title, int page) {
+    public static void setTitle(Player player, String titleID, int page) {
         try {
-            Title titleObject = new Title(title, page);
+            Title titleObject = new Title(titleID, page);
             TABAPI.setValuePermanently(player.getUniqueId(), EnumProperty.ABOVENAME, titleObject.getValue());
             player.closeInventory();
             player.sendMessage(Main.prefix + formatColors(getLanguageVariable("title-set")));

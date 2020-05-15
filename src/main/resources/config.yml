@@ -12,10 +12,13 @@ language:
   config-load-error: "&4Wystąpił problem podczas wczytywania pliku konfiguracyjnego. &cUpewnij się, że wszystkie pola posiadają &c&npoprawne&c wartości."
   config-load-error-debug-header: "&7Informacje deweloperskie (Java Stack Trace):"
   debug-more-info-in-console: "&7&oBy uzyskać pełną treść błędu, zajrzyj do konsoli."
+  unlimited-name-tag-mode-not-enabled: "&4&lUWAGA! &cW pliku konfiguracyjnym pluginu TAB opcja &f&ounlimited-nametag-prefix-suffix-mode &cjest &c&nwyłączona&c. Włącz ją, by umożliwić wyświetlanie tytułów nad głowami graczy."
 
 # Showing title modes:
 # above_head
 # above_head_chat
+
+# In order for this to work, "unlimited-nametag-prefix-suffix-mode" must be enabled in TAB config.yml.
 
 options:
   play-sounds: true
@@ -27,10 +30,10 @@ gui:
   title: "&0>>> &lTYTUŁY &0<<<"
   outline-pane:
     item: BLUE_STAINED_GLASS_PANE
-    name: "TestName"
+    name: "&fPlaceholder"
     lore:
-      - "TestLore1"
-      - "TestLore2"
+      - "&3Bucik"
+      - "&aTitles!"
   clear-titles-button:
     name: "&cUsuń wybrany tytuł"
   previous-page-button:
@@ -39,6 +42,7 @@ gui:
     name: "&aDalej &2>"
 
 # INFO: One GUI page can handle up to 28 titles.
+# After exceeding that number you have to create another page.
 
 titles:
   pages:
@@ -56,7 +60,7 @@ titles:
         permission: "bucik.titles.title.kokos"
         gui-item:
           material: PHANTOM_MEMBRANE
-          name: "&6[&e&l&oKokosi&6]"
+          name: "&6[&e&l&oKokosik&6]"
       strazak:
         title: "&f[&4&lSTRA&c&lŻAK&f]"
         permission: "bucik.titles.title.strazak"
