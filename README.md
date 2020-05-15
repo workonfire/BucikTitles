@@ -1,7 +1,6 @@
 # BucikTitles
 
-A very simple plugin for showing titles above players heads.
-It depends on [TAB](https://github.com/NEZNAMY/TAB).
+A very simple plugin for showing titles on chat above players heads that depends on [TAB](https://github.com/NEZNAMY/TAB).
 
 BucikTitles supports multiple GUI pages. One page can contain up to 28 titles.
 You can set custom permissions for certain titles as well.
@@ -11,8 +10,9 @@ You can set custom permissions for certain titles as well.
 - `bucik.titles.open`
 
 ### Screenshots
-![Screenshot 1](https://i.imgur.com/tJ3vFps.png)
+![Screenshot 1](https://i.imgur.com/qu5rhT3.png)
 ![Screenshot 2](https://i.imgur.com/98AMdNY.png)
+![Screenshot 3](https://i.imgur.com/Qe52DAq.png)
 
 ### Example titles setup
 ```yaml
@@ -44,6 +44,6 @@ titles:
           name: "&9[&f&l&oTestTitle&9]"
           amount: 2
 ```
-You can customize more options such as language in [config.yml](src/main/resources/config.yml)
+You can customize more options such as language and title placement in [config.yml](src/main/resources/config.yml)
 
 This is one of my first plugins, so feel free to create a pull request if you think something can be done better.

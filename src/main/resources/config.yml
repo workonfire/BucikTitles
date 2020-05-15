@@ -2,7 +2,7 @@
 
 language:
   plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r "
-  title-set: "&aTytuł został pomyślnie ustawiony! Mogą go teraz zobaczyć inni nad twoją głową!"
+  title-set: "&aTytuł został pomyślnie ustawiony! Mogą go teraz zobaczyć inni nad twoją głową oraz na czacie!"
   title-removed: "&aTytuł został usunięty znad twojej głowy!"
   no-permission: "&cBrak uprawnień!"
   cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
@@ -12,10 +12,15 @@ language:
   config-load-error-debug-header: "&7Informacje deweloperskie (Java Stack Trace):"
   debug-more-info-in-console: "&7&oBy uzyskać pełną treść błędu, zajrzyj do konsoli."
 
+# Showing title modes:
+# above_head
+# above_head_chat
+
 options:
   play-sound-after-setting: true
   play-sound-after-clear: true
   clear-title-on-player-quit: false
+  show-title: above_head_chat
   debug: false
 
 gui:
@@ -38,45 +43,25 @@ gui:
 titles:
   pages:
     1:
-      example:
-        title: "&e&o[&7Example&8Title&e&o]&r"
-        permission: "example.permission"
-        gui-item:
-          material: BOOK
-          name: "Testowy tytuł"
-          amount: 1
-          lore:
-            - "Testowy lore 1"
-            - "Testowy lore 2"
       wzium:
-        title: "&e&oSiemanencjusz"
-        permission: "example.permission2"
+        title: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
+        permission: "bucik.titles.title.wzium"
         gui-item:
-          material: DIAMOND_SWORD
-          name: "Testowy tytuł"
-          amount: 1
+          material: FEATHER
+          name: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
           lore:
-            - "Testowy lore XD"
-            - "Testowy lore 2"
-    2:
-      example:
-        title: "&e&o[&7Examplasdsad]&r"
-        permission: "example.permission3"
+            - "&6Róbmy wzium!"
+      kokos:
+        title: "&6[&e&l&oKokosik&6]"
+        permission: "bucik.titles.title.kokos"
         gui-item:
-          material: BAMBOO
-          name: "Testasdasdasdytuł"
-          amount: 1
-          lore:
-            - "Test lore 1"
-            - "Test lore 2"
-      wzium:
-        title: "&e&oSiemanencjusz"
-        permission: "example.permission4"
+          material: PHANTOM_MEMBRANE
+          name: "&6[&e&l&oKokosi&6]"
+      strazak:
+        title: "&f[&4&lSTRA&c&lŻAK&f]"
+        permission: "bucik.titles.title.strazak"
         gui-item:
           material: PLAYER_HEAD
-          texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2IwM2M0OTg2ODlkNDg2NmRmYTA5MDFhZmNjNmM2NmVmODFhYmUxNTMwZDNlZmI2MGEzMzBiYTlkMjM0YjRlNSJ9fX0="
-          name: "Testowy tytuł"
-          amount: 1
-          lore:
-            - "Testowy lore XD"
-            - "Testowy lore 2"
+          texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDA4MGJiZWZjYTg3ZGMwZjM2NTM2YjY1MDg0MjVjZmM0Yjk1YmE2ZThmNWU2YTQ2ZmY5ZTljYjQ4OGE5ZWQifX19"
+          name: "&f[&4&lSTRA&c&lŻAK&f]"
+          amount: 2

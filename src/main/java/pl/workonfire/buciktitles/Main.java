@@ -1,68 +1,25 @@
 package pl.workonfire.buciktitles;
 
-import me.neznamy.tab.api.EnumProperty;
-import me.neznamy.tab.api.TABAPI;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import static pl.workonfire.buciktitles.Functions.formatColors;
 
 public final class Main extends JavaPlugin implements Listener {
     public static Main plugin;
     public static String prefix;
 
-    /**
-     * Replaces & to § in order to show colors properly.
-     * @param text String to format
-     * @return Formatted string
-     */
-    public static String formatColors(String text) {
-        return ChatColor.translateAlternateColorCodes('&', text);
-    }
-
     @Override
     public void onEnable() {
         plugin = this;
         plugin.saveDefaultConfig();
-        getServer().getPluginManager().registerEvents(plugin, plugin);
+        getServer().getPluginManager().registerEvents(new EventHandler(), plugin);
+        getCommand("titles").setTabCompleter(new TabCompletion());
         prefix = formatColors(ConfigManager.config.getString("language.plugin-prefix"));
         System.out.println(prefix + "§fBucikTitles by Buty935. Discord: workonfire#8262");
-        getCommand("titles").setTabCompleter(new TabCompletion());
-    }
-
-    /**
-     * Sets the TAB above name for player.
-     * @param player Player representation
-     * @param title_id Title ID from config
-     * @param page Page number where the title appears
-     */
-    public static void setTitle(Player player, String title_id, int page) {
-        String title = ConfigManager.config.getString(String.format("titles.pages.%d.%s.title", page, title_id));
-        TABAPI.setValuePermanently(player.getUniqueId(), EnumProperty.ABOVENAME, title);
-        player.closeInventory();
-        player.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.title-set")));
-        if (ConfigManager.config.getBoolean("options.play-sound-after-setting"))
-            player.playSound(player.getLocation(), Sound.ENTITY_LLAMA_SWAG, 1.0F, 1.0F);
-    }
-
-    /**
-     * Removes the TAB above name from player.
-     * @param player Player representation
-     */
-    public static void takeOff(Player player, boolean silent) {
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + player.getName() + " abovename");
-        if (!silent) {
-            player.closeInventory();
-            player.sendMessage(prefix + formatColors(ConfigManager.config.getString("language.title-removed")));
-            if (ConfigManager.config.getBoolean("options.play-sound-after-clear"))
-                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
-        }
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -92,8 +49,4 @@ public final class Main extends JavaPlugin implements Listener {
         return true;
     }
 
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event) {
-        if (ConfigManager.config.getBoolean("options.clear-title-on-player-quit")) takeOff(event.getPlayer(), true);
-    }
 }
