@@ -1,4 +1,4 @@
-package pl.workonfire.buciktitles;
+package pl.workonfire.buciktitles.data;
 
 import de.tr7zw.changeme.nbtapi.NBTCompound;
 import de.tr7zw.changeme.nbtapi.NBTItem;
@@ -10,12 +10,15 @@ import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import pl.workonfire.buciktitles.Main;
+import pl.workonfire.buciktitles.managers.ConfigManager;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Set;
 
 import static java.lang.String.format;
+import static pl.workonfire.buciktitles.managers.ConfigManager.getLanguageVariable;
 
 public class Functions {
 
@@ -62,9 +65,9 @@ public class Functions {
      * @param exception Exception object
      */
     public static void handleErrors(Player player, Exception exception) {
-        player.sendMessage(Main.prefix + Functions.formatColors(ConfigManager.config.getString("language.config-load-error")));
+        player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("config-load-error")));
         if (ConfigManager.config.getBoolean("options.debug")) {
-            player.sendMessage(Main.prefix + Functions.formatColors(ConfigManager.config.getString("language.config-load-error-debug-header")));
+            player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("config-load-error-debug-header")));
             StringWriter sw = new StringWriter();
             exception.printStackTrace(new PrintWriter(sw));
             exception.printStackTrace();
@@ -74,7 +77,7 @@ public class Functions {
                     .replaceAll("\u0009", "    ")
                     .replaceAll("\r", "\n") + "...")
             ;
-            player.sendMessage(Main.prefix + Functions.formatColors(ConfigManager.config.getString("language.debug-more-info-in-console")));
+            player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("debug-more-info-in-console")));
         }
     }
 
@@ -88,10 +91,9 @@ public class Functions {
         try {
             Title titleObject = new Title(title, page);
             TABAPI.setValuePermanently(player.getUniqueId(), EnumProperty.ABOVENAME, titleObject.getValue());
-            //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + player.getName() + " abovename " + titleObject.getValue());
             player.closeInventory();
-            player.sendMessage(Main.prefix + formatColors(ConfigManager.config.getString("language.title-set")));
-            if (ConfigManager.config.getBoolean("options.play-sound-after-setting"))
+            player.sendMessage(Main.prefix + formatColors(getLanguageVariable("title-set")));
+            if (ConfigManager.config.getBoolean("options.play-sounds"))
                 player.playSound(player.getLocation(), Sound.ENTITY_LLAMA_SWAG, 1.0F, 1.0F);
         } catch (Exception e) {
             handleErrors(player, e);
@@ -104,12 +106,20 @@ public class Functions {
      */
     public static void takeOff(Player player, boolean silent) {
         try {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + player.getName() + " abovename");
-            if (!silent) {
+            if (!TABAPI.getOriginalValue(player.getUniqueId(), EnumProperty.ABOVENAME).isEmpty()) {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + player.getName() + " abovename");
+                if (!silent) {
+                    player.closeInventory();
+                    player.sendMessage(Main.prefix + formatColors(getLanguageVariable("title-removed")));
+                    if (ConfigManager.config.getBoolean("options.play-sounds"))
+                        player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
+                }
+            }
+            else {
                 player.closeInventory();
-                player.sendMessage(Main.prefix + formatColors(ConfigManager.config.getString("language.title-removed")));
-                if (ConfigManager.config.getBoolean("options.play-sound-after-clear"))
-                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
+                player.sendMessage(Main.prefix + formatColors(getLanguageVariable("no-title-selected")));
+                if (ConfigManager.config.getBoolean("options.play-sounds"))
+                    player.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, 0.5F, 1.8F);
             }
         } catch (Exception e) {
             handleErrors(player, e);

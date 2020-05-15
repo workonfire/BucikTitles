@@ -1,4 +1,4 @@
-package pl.workonfire.buciktitles;
+package pl.workonfire.buciktitles.managers;
 
 import com.github.stefvanschie.inventoryframework.Gui;
 import com.github.stefvanschie.inventoryframework.GuiItem;
@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.workonfire.buciktitles.data.Functions;
+import pl.workonfire.buciktitles.data.Title;
 
 import java.util.ArrayList;
 import java.util.List;

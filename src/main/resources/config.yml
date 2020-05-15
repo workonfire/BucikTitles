@@ -5,6 +5,7 @@ language:
   title-set: "&aTytuł został pomyślnie ustawiony! Mogą go teraz zobaczyć inni nad twoją głową oraz na czacie!"
   title-removed: "&aTytuł został usunięty znad twojej głowy!"
   no-permission: "&cBrak uprawnień!"
+  no-title-selected: "&cNie masz wybranego żadnego tytułu."
   cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
   plugin-reloaded: "&aKonfiguracja została przeładowana."
   subcommand-does-not-exist: "&cTa podkomenda nie istnieje."
@@ -17,8 +18,7 @@ language:
 # above_head_chat
 
 options:
-  play-sound-after-setting: true
-  play-sound-after-clear: true
+  play-sounds: true
   clear-title-on-player-quit: false
   show-title: above_head_chat
   debug: false

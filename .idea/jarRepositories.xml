@@ -12,6 +12,11 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="data-local" />
+      <option name="name" value="data" />
+      <option name="url" value="file://C:\Users\Krystian\IdeaProjects\BucikTitles/repo" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="codemc-repo" />
       <option name="name" value="codemc-repo" />
       <option name="url" value="https://repo.codemc.org/repository/maven-public/" />
@@ -30,6 +35,11 @@
       <option name="id" value="sonatype" />
       <option name="name" value="sonatype" />
       <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="data-local" />
+      <option name="name" value="data" />
+      <option name="url" value="file://C:\Users\Krystian\IdeaProjects\BucikTitles/src/main/resources/libraries" />
     </remote-repository>
   </component>
 </project>

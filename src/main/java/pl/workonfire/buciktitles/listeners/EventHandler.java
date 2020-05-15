@@ -1,10 +1,12 @@
-package pl.workonfire.buciktitles;
+package pl.workonfire.buciktitles.listeners;
 
 import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import pl.workonfire.buciktitles.managers.ConfigManager;
+import pl.workonfire.buciktitles.data.Functions;
 
 
 public class EventHandler implements Listener {

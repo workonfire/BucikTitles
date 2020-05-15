@@ -1,8 +1,7 @@
-package pl.workonfire.buciktitles;
+package pl.workonfire.buciktitles.listeners;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class TabCompletion implements TabCompleter {
+public class TabCompleter implements org.bukkit.command.TabCompleter {
     private static final List<String> userCommands = Collections.singletonList("info");
     private static final List<String> adminCommands = Arrays.asList("reload", "info");
 

@@ -1,6 +1,7 @@
-package pl.workonfire.buciktitles;
+package pl.workonfire.buciktitles.data;
 
 import org.bukkit.Material;
+import pl.workonfire.buciktitles.managers.ConfigManager;
 
 import java.util.List;
 
