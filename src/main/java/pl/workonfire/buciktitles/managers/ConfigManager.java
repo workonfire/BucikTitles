@@ -14,6 +14,11 @@ public class ConfigManager {
         config = Main.plugin.getConfig();
     }
 
+    /**
+     * Gets a language variable value from the config.
+     * @param variable Unparsed language variable, e.g. "no-permission"
+     * @return Language string
+     */
     public static String getLanguageVariable(String variable) {
         return config.getString("language." + variable);
     }
