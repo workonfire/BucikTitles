@@ -68,10 +68,10 @@ public class Functions {
         player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("config-load-error")));
         if (ConfigManager.config.getBoolean("options.debug") && player.hasPermission("bucik.titles.debug")) {
             player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("config-load-error-debug-header")));
-            StringWriter sw = new StringWriter();
-            exception.printStackTrace(new PrintWriter(sw));
+            StringWriter stringWriter = new StringWriter();
+            exception.printStackTrace(new PrintWriter(stringWriter));
             exception.printStackTrace();
-            String exceptionAsString = sw.toString();
+            String exceptionAsString = stringWriter.toString();
             exceptionAsString = exceptionAsString.substring(0, Math.min(exceptionAsString.length(), 256));
             player.sendMessage("§c" + exceptionAsString
                     .replaceAll("\u0009", "    ")
@@ -95,8 +95,8 @@ public class Functions {
             player.sendMessage(Main.prefix + formatColors(getLanguageVariable("title-set")));
             if (ConfigManager.config.getBoolean("options.play-sounds"))
                 player.playSound(player.getLocation(), Sound.ENTITY_LLAMA_SWAG, 1.0F, 1.0F);
-        } catch (Exception e) {
-            handleErrors(player, e);
+        } catch (Exception exception) {
+            handleErrors(player, exception);
         }
     }
 
@@ -121,8 +121,8 @@ public class Functions {
                 if (ConfigManager.config.getBoolean("options.play-sounds"))
                     player.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, 0.5F, 1.8F);
             }
-        } catch (Exception e) {
-            handleErrors(player, e);
+        } catch (Exception exception) {
+            handleErrors(player, exception);
         }
     }
 }

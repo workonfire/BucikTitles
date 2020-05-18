@@ -70,7 +70,7 @@ public class GUIManager {
                 if (ConfigManager.config.getString("gui.next-page-button.name") != null)
                     nextButtonItemMeta.setDisplayName(Functions.formatColors(ConfigManager.config.getString("gui.next-page-button.name")));
                 nextButtonItem.setItemMeta(nextButtonItemMeta);
-                nextButton.addItem(new GuiItem(nextButtonItem, event -> showUserInterface(plugin, player, page + 1)));
+                nextButton.addItem(new GuiItem(nextButtonItem, event -> showUserInterface(plugin, player, nextPage)));
                 gui.addPane(nextButton);
             }
             else rightPane = new StaticPane(8, 0, 1, 6);
@@ -105,20 +105,17 @@ public class GUIManager {
                 if (player.hasPermission(title.getPermission())) {
                     ItemStack titleItem = new ItemStack(title.getMaterial());
                     ItemMeta itemMeta = titleItem.getItemMeta();
-                    String titleItemName = Functions.formatColors(title.getGUIName());
-                    itemMeta.setDisplayName(Functions.formatColors(titleItemName));
+                    itemMeta.setDisplayName(Functions.formatColors(title.getGUIName()));
                     if (!title.getLore().isEmpty()) {
                         List<String> titleItemLore = new ArrayList<>();
                         for (String lore_line : title.getLore())
                             titleItemLore.add(Functions.formatColors(lore_line));
                         itemMeta.setLore(titleItemLore);
                     }
-
                     titleItem.setItemMeta(itemMeta);
-                    int title_item_amount = title.getAmount();
-                    if (title_item_amount != 0) titleItem.setAmount(title_item_amount);
+                    if (title.getAmount() != 0) titleItem.setAmount(title.getAmount());
                     if (title.getTexture() != null)
-                        titleItem = Functions.getTexturedHead(titleItem, title.getTexture(), titleItemName);
+                        titleItem = Functions.getTexturedHead(titleItem, title.getTexture(), title.getGUIName());
                     titlesPane.addItem(new GuiItem(titleItem, event -> Functions.setTitle(player, title.getID(), page)));
                 }
             }

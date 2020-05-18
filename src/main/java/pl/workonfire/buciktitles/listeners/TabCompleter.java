@@ -6,12 +6,11 @@ import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class TabCompleter implements org.bukkit.command.TabCompleter {
-    private static final List<String> userCommands = Collections.singletonList("info");
-    private static final List<String> adminCommands = Arrays.asList("reload", "info");
+    private static final List<String> userCommands = Arrays.asList("info", "clear");
+    private static final List<String> adminCommands = Arrays.asList("reload", "info", "clear");
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

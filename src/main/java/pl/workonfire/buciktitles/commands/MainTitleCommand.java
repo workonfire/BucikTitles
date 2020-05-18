@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.workonfire.buciktitles.Main;
+import pl.workonfire.buciktitles.data.Functions;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 import pl.workonfire.buciktitles.managers.GUIManager;
 
@@ -32,6 +33,7 @@ public class MainTitleCommand implements CommandExecutor {
                         "§6Version: §b" + Main.version + "\n" +
                         "§c§m--------------");
             }
+            else if (args[0].equalsIgnoreCase("clear")) Functions.takeOff((Player) sender, false);
             else sender.sendMessage(prefix + formatColors(getLanguageVariable("subcommand-does-not-exist")));
         }
         else {

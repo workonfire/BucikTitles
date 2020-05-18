@@ -1,6 +1,5 @@
 package pl.workonfire.buciktitles;
 
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.workonfire.buciktitles.commands.MainTitleCommand;
 import pl.workonfire.buciktitles.listeners.EventHandler;
@@ -9,10 +8,10 @@ import pl.workonfire.buciktitles.listeners.TabCompleter;
 import static pl.workonfire.buciktitles.data.Functions.formatColors;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getLanguageVariable;
 
-public final class Main extends JavaPlugin implements Listener {
+public final class Main extends JavaPlugin {
     public static Main plugin;
     public static String prefix;
-    public static final String version = "1.0.2";
+    public static final String version = "1.0.3";
 
     @Override
     public void onEnable() {

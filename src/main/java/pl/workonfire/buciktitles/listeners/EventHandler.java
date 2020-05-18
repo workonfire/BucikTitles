@@ -23,8 +23,8 @@ public class EventHandler implements Listener {
             if (!selectedTitle.isEmpty()
                     && ConfigManager.config.getString("options.show-title").equalsIgnoreCase("above_head_chat"))
                 event.setFormat(selectedTitle + "§r " + event.getFormat());
-        } catch (Exception e) {
-            Functions.handleErrors(event.getPlayer(), e);
+        } catch (Exception exception) {
+            Functions.handleErrors(event.getPlayer(), exception);
         }
     }
 }
