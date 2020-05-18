@@ -10,7 +10,7 @@ import pl.workonfire.buciktitles.managers.ConfigManager;
 public final class Main extends JavaPlugin {
     public static Main plugin;
     public static String prefix;
-    public static final String version = "1.0.3";
+    public static final String version = "1.0.4";
 
     @Override
     public void onEnable() {

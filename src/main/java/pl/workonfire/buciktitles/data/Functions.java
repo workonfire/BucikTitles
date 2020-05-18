@@ -67,6 +67,8 @@ public class Functions {
     public static void handleErrors(Player player, Exception exception) {
         player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("config-load-error")));
         if (ConfigManager.config.getBoolean("options.debug") && player.hasPermission("bucik.titles.debug")) {
+            if (ConfigManager.config.getBoolean("options.play-sounds"))
+                player.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, 1.0F, 1.0F);
             player.sendMessage(Main.prefix + Functions.formatColors(getLanguageVariable("config-load-error-debug-header")));
             StringWriter stringWriter = new StringWriter();
             exception.printStackTrace(new PrintWriter(stringWriter));

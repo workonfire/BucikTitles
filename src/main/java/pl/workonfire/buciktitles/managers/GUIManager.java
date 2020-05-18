@@ -105,7 +105,8 @@ public class GUIManager {
                 if (player.hasPermission(title.getPermission())) {
                     ItemStack titleItem = new ItemStack(title.getMaterial());
                     ItemMeta itemMeta = titleItem.getItemMeta();
-                    itemMeta.setDisplayName(Functions.formatColors(title.getGUIName()));
+                    if (title.getGUIName() != null) itemMeta.setDisplayName(Functions.formatColors(title.getGUIName()));
+                    else itemMeta.setDisplayName(Functions.formatColors(title.getValue()));
                     if (!title.getLore().isEmpty()) {
                         List<String> titleItemLore = new ArrayList<>();
                         for (String lore_line : title.getLore())
