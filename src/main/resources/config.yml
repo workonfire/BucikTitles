@@ -1,33 +1,18 @@
 # Config for BucikTitles
 
-language:
-  plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r "
-  title-set: "&aTytuł został pomyślnie ustawiony! Mogą go teraz zobaczyć inni nad twoją głową oraz na czacie!"
-  title-removed: "&aTytuł został usunięty znad twojej głowy i z czatu!"
-  no-permission: "&cBrak uprawnień!"
-  no-title-selected: "&cNie masz wybranego żadnego tytułu."
-  cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
-  plugin-reloaded: "&aKonfiguracja została przeładowana."
-  subcommand-does-not-exist: "&cTa podkomenda nie istnieje."
-  config-load-error: "&4Wystąpił problem podczas wczytywania pliku konfiguracyjnego. &cUpewnij się, że wszystkie pola posiadają &c&npoprawne&c wartości."
-  config-load-error-debug-header: "&7Informacje deweloperskie (Java Stack Trace):"
-  debug-more-info-in-console: "&7&oBy uzyskać pełną treść błędu, zajrzyj do konsoli."
-  unlimited-name-tag-mode-not-enabled: "&4&lUWAGA! &cW pliku konfiguracyjnym pluginu TAB opcja &f&ounlimited-nametag-prefix-suffix-mode &cjest &c&nwyłączona&c. Włącz ją, by umożliwić wyświetlanie tytułów nad głowami graczy."
-
 # Showing title modes:
 # above_head
 # above_head_chat
 
-# In order for this to work, "unlimited-nametag-prefix-suffix-mode" must be enabled in TAB config.yml.
-
 options:
+  locale: en
   play-sounds: true
   clear-title-on-player-quit: false
-  show-title: above_head_chat
+  show-title: above_head_chat # In order for this to work, "unlimited-nametag-prefix-suffix-mode" must be enabled in TAB config.yml.
   debug: false
 
 gui:
-  title: "&0>>> &lTYTUŁY &0<<<"
+  title: "&0>>> &lTITLES &0<<<"
   outline-pane:
     item: BLUE_STAINED_GLASS_PANE
     name: "&fPlaceholder"
@@ -35,37 +20,8 @@ gui:
       - "&3Bucik"
       - "&aTitles!"
   clear-titles-button:
-    name: "&cUsuń wybrany tytuł"
+    name: "&cRemove the current title"
   previous-page-button:
-    name: "&4< &cWróć"
+    name: "&4< &cBack"
   next-page-button:
-    name: "&aDalej &2>"
-
-# INFO: One GUI page can handle up to 28 titles.
-# After exceeding that number you have to create another page.
-
-titles:
-  pages:
-    1:
-      wzium:
-        title: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
-        permission: "bucik.titles.title.wzium"
-        gui-item:
-          material: FEATHER
-          name: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
-          lore:
-            - "&6Róbmy wzium!"
-      kokos:
-        title: "&6[&e&l&oKokosik&6]"
-        permission: "bucik.titles.title.kokos"
-        gui-item:
-          material: PHANTOM_MEMBRANE
-          name: "&6[&e&l&oKokosik&6]"
-      strazak:
-        title: "&f[&4&lSTRA&c&lŻAK&f]"
-        permission: "bucik.titles.title.strazak"
-        gui-item:
-          material: PLAYER_HEAD
-          texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDA4MGJiZWZjYTg3ZGMwZjM2NTM2YjY1MDg0MjVjZmM0Yjk1YmE2ZThmNWU2YTQ2ZmY5ZTljYjQ4OGE5ZWQifX19"
-          name: "&f[&4&lSTRA&c&lŻAK&f]"
-          amount: 2
+    name: "&aNext &2>"

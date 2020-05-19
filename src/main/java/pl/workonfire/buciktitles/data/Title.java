@@ -19,13 +19,13 @@ public class Title {
 
     public Title(String titleID, int page) {
         this.titleID = titleID;
-        title = ConfigManager.config.getString(format("titles.pages.%d.%s.title", page, titleID));
-        permission = ConfigManager.config.getString(format("titles.pages.%d.%s.permission", page, titleID));
-        nameInGUI = ConfigManager.config.getString(format("titles.pages.%d.%s.gui-item.name", page, titleID));
-        material = Material.getMaterial(ConfigManager.config.getString(format("titles.pages.%d.%s.gui-item.material", page, titleID)));
-        lore = ConfigManager.config.getStringList(format("titles.pages.%d.%s.gui-item.lore", page, titleID));
-        amount = ConfigManager.config.getInt(format("titles.pages.%d.%s.gui-item.amount", page, titleID));
-        texture = ConfigManager.config.getString(format("titles.pages.%d.%s.gui-item.texture", page, titleID));
+        title = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.title", page, titleID));
+        permission = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.permission", page, titleID));
+        nameInGUI = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.gui-item.name", page, titleID));
+        material = Material.getMaterial(ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.gui-item.material", page, titleID)));
+        lore = ConfigManager.getTitlesConfig().getStringList(format("titles.pages.%d.%s.gui-item.lore", page, titleID));
+        amount = ConfigManager.getTitlesConfig().getInt(format("titles.pages.%d.%s.gui-item.amount", page, titleID));
+        texture = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.gui-item.texture", page, titleID));
     }
 
     public String getID() {

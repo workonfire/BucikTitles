@@ -13,7 +13,7 @@ public class EventHandler implements Listener {
 
     @org.bukkit.event.EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        if (ConfigManager.config.getBoolean("options.clear-title-on-player-quit")) Functions.takeOff(event.getPlayer(), true);
+        if (ConfigManager.getConfig().getBoolean("options.clear-title-on-player-quit")) Functions.takeOff(event.getPlayer(), true);
     }
 
     @org.bukkit.event.EventHandler
@@ -21,7 +21,7 @@ public class EventHandler implements Listener {
         try {
             String selectedTitle = TABAPI.getOriginalValue(event.getPlayer().getUniqueId(), EnumProperty.ABOVENAME);
             if (!selectedTitle.isEmpty()
-                    && ConfigManager.config.getString("options.show-title").equalsIgnoreCase("above_head_chat"))
+                    && ConfigManager.getConfig().getString("options.show-title").equalsIgnoreCase("above_head_chat"))
                 event.setFormat(selectedTitle + "§r " + event.getFormat());
         } catch (Exception exception) {
             Functions.handleErrors(event.getPlayer(), exception);

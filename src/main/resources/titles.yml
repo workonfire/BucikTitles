@@ -1,0 +1,28 @@
+# INFO: One GUI page can handle up to 28 titles.
+# After exceeding that number you have to create another page.
+
+titles:
+  pages:
+    1:
+      wzium:
+        title: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
+        permission: "bucik.titles.title.wzium"
+        gui-item:
+          material: FEATHER
+          name: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
+          lore:
+            - "&6Róbmy wzium!"
+      kokos:
+        title: "&6[&e&l&oKokosik&6]"
+        permission: "bucik.titles.title.kokos"
+        gui-item:
+          material: PHANTOM_MEMBRANE
+          name: "&6[&e&l&oKokosik&6]"
+      strazak:
+        title: "&f[&4&lSTRA&c&lŻAK&f]"
+        permission: "bucik.titles.title.strazak"
+        gui-item:
+          material: PLAYER_HEAD
+          texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDA4MGJiZWZjYTg3ZGMwZjM2NTM2YjY1MDg0MjVjZmM0Yjk1YmE2ZThmNWU2YTQ2ZmY5ZTljYjQ4OGE5ZWQifX19"
+          name: "&f[&4&lSTRA&c&lŻAK&f]"
+          amount: 2

@@ -1,0 +1,13 @@
+language:
+  plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r "
+  title-set: "&aTytuł został pomyślnie ustawiony! Mogą go teraz zobaczyć inni nad twoją głową oraz na czacie!"
+  title-removed: "&aTytuł został usunięty znad twojej głowy i z czatu!"
+  no-permission: "&cBrak uprawnień!"
+  no-title-selected: "&cNie masz wybranego żadnego tytułu."
+  cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
+  plugin-reloaded: "&aKonfiguracja została przeładowana."
+  subcommand-does-not-exist: "&cTa podkomenda nie istnieje."
+  config-load-error: "&4Wystąpił problem podczas wczytywania pliku konfiguracyjnego. &cUpewnij się, że wszystkie pola posiadają &c&npoprawne&c wartości."
+  config-load-error-debug-header: "&7Informacje deweloperskie (Java Stack Trace):"
+  debug-more-info-in-console: "&7&oBy uzyskać pełną treść błędu, zajrzyj do konsoli."
+  unlimited-name-tag-mode-not-enabled: "&4&lUWAGA! &cW pliku konfiguracyjnym pluginu TAB opcja &f&ounlimited-nametag-prefix-suffix-mode &cjest &c&nwyłączona&c. Włącz ją, by umożliwić wyświetlanie tytułów nad głowami graczy."
