@@ -1,6 +1,5 @@
 package pl.workonfire.buciktitles.listeners;
 
-import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -19,7 +18,7 @@ public class EventHandler implements Listener {
     @org.bukkit.event.EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         try {
-            String selectedTitle = TABAPI.getOriginalValue(event.getPlayer().getUniqueId(), EnumProperty.ABOVENAME);
+            String selectedTitle = TABAPI.getOriginalValue(event.getPlayer().getUniqueId(), Functions.getHeadTitlePosition());
             if (!selectedTitle.isEmpty()
                     && ConfigManager.getConfig().getString("options.show-title").equalsIgnoreCase("above_head_chat"))
                 event.setFormat(selectedTitle + "§r " + event.getFormat());

@@ -49,6 +49,15 @@ public class ConfigManager {
         return Functions.formatColors(getLanguageConfig().getString("language." + variable));
     }
 
+    /**
+     * Gets a global plugin prefix.
+     * @return Plugin prefix
+     */
+    public static String getPrefix() {
+        return getLanguageVariable("plugin-prefix");
+    }
+
+    // Getters \\
     public static FileConfiguration getConfig() {
         return config;
     }
@@ -59,9 +68,5 @@ public class ConfigManager {
 
     public static FileConfiguration getTitlesConfig() {
         return titlesConfig;
-    }
-
-    public static String getPrefix() {
-        return getLanguageVariable("plugin-prefix");
     }
 }

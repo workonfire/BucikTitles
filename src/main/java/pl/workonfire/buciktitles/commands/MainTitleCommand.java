@@ -30,6 +30,16 @@ public class MainTitleCommand implements CommandExecutor {
                         "§6Version: §b" + Main.version + "\n" +
                         "§c§m--------------");
             }
+            else if (args[0].equalsIgnoreCase("enableUnlimitedNameTagMode")) {
+                if (sender.hasPermission("bucik.titles.debug")) {
+                    if (!TABAPI.isUnlimitedNameTagModeEnabled()) {
+                        TABAPI.enableUnlimitedNameTagModePermanently();
+                        sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("unlimited-name-tag-mode-has-been-enabled"));
+                    }
+                    else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("unlimited-name-tag-mode-is-enabled"));
+                }
+                else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("no-permission"));
+            }
             else if (args[0].equalsIgnoreCase("clear")) Functions.takeOff((Player) sender, false);
             else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("subcommand-does-not-exist"));
         }

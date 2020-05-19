@@ -4,11 +4,19 @@
 # above_head
 # above_head_chat
 
+# Title positions (available if show-title set to "above_head_chat"):
+# abovename
+# belowname
+
+# Note: if you're having issues with titles stuck above players heads, temporarily
+# set "clear-title-on-player-quit" to true and let the players log out.
+
 options:
   locale: en
   play-sounds: true
   clear-title-on-player-quit: false
   show-title: above_head_chat # In order for this to work, "unlimited-nametag-prefix-suffix-mode" must be enabled in TAB config.yml.
+  title-position: abovename
   debug: false
 
 gui:

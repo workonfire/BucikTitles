@@ -10,12 +10,15 @@ You can set custom permissions for certain titles as well.
 - `bucik.titles.open`
 - `bucik.titles.debug`
 
+### Commands
+`/titles [clear|info|reload]`
+
 ### Screenshots
 ![Screenshot 1](https://i.imgur.com/qu5rhT3.png)
 ![Screenshot 2](https://i.imgur.com/98AMdNY.png)
 ![Screenshot 3](https://i.imgur.com/Qe52DAq.png)
 
-### Example titles setup
+### Example titles setup (titles.yml)
 ```yaml
 titles:
   pages:
@@ -25,25 +28,22 @@ titles:
         permission: "bucik.titles.title.wzium"
         gui-item:
           material: FEATHER
-          name: "&9[&3&l&oW&b&lZ&f&l&oIU&b&l&oU&3&l&oM&9]"
-          amount: 1
+          amount: 5
           lore:
-          - "&6Róbmy wzium!"
+         - "&6Róbmy wzium!"
       testowy:
         title: "&6[&e&l&oTestowy&6]"
         permission: "bucik.titles.title.testowy"
         gui-item:
           material: BEDROCK
-          name: "&6[&e&l&oTestowy&6]"
-          amount: 1
     2:
       test_title:
         title: "&9[&f&l&oTestTitle&9]"
         permission: "bucik.titles.title.test_title"
         gui-item:
-          material: WOODEN_AXE
-          name: "&9[&f&l&oTestTitle&9]"
-          amount: 2
+          material: PLAYER_HEAD
+          name: "&9[&f&l&oDIFFERENT NAME&9]"
+          texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDA4MGJiZWZjYTg3ZGMwZjM2NTM2YjY1MDg0MjVjZmM0Yjk1YmE2ZThmNWU2YTQ2ZmY5ZTljYjQ4OGE5ZWQifX19"
 ```
 You can customize more options such as language and title placement in [config.yml](src/main/resources/config.yml)
 

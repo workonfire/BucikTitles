@@ -28,6 +28,7 @@ public class Title {
         texture = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.gui-item.texture", page, titleID));
     }
 
+    // Getters \\
     public String getID() {
         return titleID;
     }

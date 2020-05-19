@@ -91,7 +91,7 @@ public class Functions {
     public static void setTitle(Player player, String titleID, int page) {
         try {
             Title titleObject = new Title(titleID, page);
-            TABAPI.setValuePermanently(player.getUniqueId(), EnumProperty.ABOVENAME, titleObject.getValue());
+            TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), titleObject.getValue());
             player.closeInventory();
             player.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("title-set"));
             if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
@@ -104,11 +104,12 @@ public class Functions {
     /**
      * Removes the TAB above name from player.
      * @param player Player representation
+     * @param silent Whether to show the info for player or not
      */
     public static void takeOff(Player player, boolean silent) {
         try {
-            if (!TABAPI.getOriginalValue(player.getUniqueId(), EnumProperty.ABOVENAME).isEmpty()) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + player.getName() + " abovename");
+            if (!TABAPI.getOriginalValue(player.getUniqueId(), getHeadTitlePosition()).isEmpty()) {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + player.getName() + " " + getHeadTitlePositionAsString());
                 if (!silent) {
                     player.closeInventory();
                     player.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("title-removed"));
@@ -125,5 +126,22 @@ public class Functions {
         } catch (Exception exception) {
             handleErrors(player, exception);
         }
+    }
+
+    /**
+     * Gets the position of head title (abovename, belowname)
+     * @return Head title position as EnumProperty
+     */
+    public static EnumProperty getHeadTitlePosition() {
+        if (getHeadTitlePositionAsString().equals("abovename")) return EnumProperty.ABOVENAME;
+        else return EnumProperty.BELOWNAME;
+    }
+
+    /**
+     * Gets the position of head title (abovename, belowname)
+     * @return Head title position as String
+     */
+    public static String getHeadTitlePositionAsString() {
+        return ConfigManager.getConfig().getString("options.title-position");
     }
 }
