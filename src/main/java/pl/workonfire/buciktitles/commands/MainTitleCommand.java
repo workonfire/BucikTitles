@@ -10,7 +10,6 @@ import pl.workonfire.buciktitles.data.Functions;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 import pl.workonfire.buciktitles.managers.GUIManager;
 
-import static pl.workonfire.buciktitles.data.Functions.formatColors;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getLanguageVariable;
 
 public class MainTitleCommand implements CommandExecutor {
@@ -20,9 +19,9 @@ public class MainTitleCommand implements CommandExecutor {
             if (args[0].equalsIgnoreCase("reload")) {
                 if (sender.hasPermission("bucik.titles.reload")) {
                     ConfigManager.reloadConfiguration();
-                    sender.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("plugin-reloaded")));
+                    sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("plugin-reloaded"));
                 }
-                else sender.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("no-permission")));
+                else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("no-permission"));
             }
             else if (args[0].equalsIgnoreCase("info")) {
                 sender.sendMessage("§c§m--------------\n" +
@@ -32,16 +31,16 @@ public class MainTitleCommand implements CommandExecutor {
                         "§c§m--------------");
             }
             else if (args[0].equalsIgnoreCase("clear")) Functions.takeOff((Player) sender, false);
-            else sender.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("subcommand-does-not-exist")));
+            else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("subcommand-does-not-exist"));
         }
         else {
             if (sender.hasPermission("bucik.titles.open")) {
                 if (!TABAPI.isUnlimitedNameTagModeEnabled() && sender.hasPermission("bucik.titles.debug"))
-                    sender.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("unlimited-name-tag-mode-not-enabled")));
+                    sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("unlimited-name-tag-mode-not-enabled"));
                 if (sender instanceof Player) GUIManager.showUserInterface(Main.plugin, (Player) sender, 1);
-                else sender.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("cannot-open-from-console")));
+                else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("cannot-open-from-console"));
             }
-            else sender.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("no-permission")));
+            else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("no-permission"));
         }
         return true;
     }

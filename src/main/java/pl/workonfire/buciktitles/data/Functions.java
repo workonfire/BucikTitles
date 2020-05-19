@@ -66,9 +66,9 @@ public class Functions {
     public static void handleErrors(Player player, Exception exception) {
         if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
             player.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, 1.0F, 1.0F);
-        player.sendMessage(ConfigManager.getPrefix() + Functions.formatColors(getLanguageVariable("config-load-error")));
+        player.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("config-load-error"));
         if (ConfigManager.getConfig().getBoolean("options.debug") && player.hasPermission("bucik.titles.debug")) {
-            player.sendMessage(ConfigManager.getPrefix() + Functions.formatColors(getLanguageVariable("config-load-error-debug-header")));
+            player.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("config-load-error-debug-header"));
             StringWriter stringWriter = new StringWriter();
             exception.printStackTrace(new PrintWriter(stringWriter));
             exception.printStackTrace();
@@ -78,7 +78,7 @@ public class Functions {
                     .replaceAll("\u0009", "    ")
                     .replaceAll("\r", "\n") + "...")
             ;
-            player.sendMessage(ConfigManager.getPrefix() + Functions.formatColors(getLanguageVariable("debug-more-info-in-console")));
+            player.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("debug-more-info-in-console"));
         }
     }
 
@@ -93,7 +93,7 @@ public class Functions {
             Title titleObject = new Title(titleID, page);
             TABAPI.setValuePermanently(player.getUniqueId(), EnumProperty.ABOVENAME, titleObject.getValue());
             player.closeInventory();
-            player.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("title-set")));
+            player.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("title-set"));
             if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
                 player.playSound(player.getLocation(), Sound.ENTITY_LLAMA_SWAG, 1.0F, 1.0F);
         } catch (Exception exception) {
@@ -111,14 +111,14 @@ public class Functions {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tab player " + player.getName() + " abovename");
                 if (!silent) {
                     player.closeInventory();
-                    player.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("title-removed")));
+                    player.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("title-removed"));
                     if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
                         player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
                 }
             }
             else {
                 player.closeInventory();
-                player.sendMessage(ConfigManager.getPrefix() + formatColors(getLanguageVariable("no-title-selected")));
+                player.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("no-title-selected"));
                 if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
                     player.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, 0.5F, 1.8F);
             }
