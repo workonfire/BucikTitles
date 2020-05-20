@@ -37,10 +37,6 @@ public class Title {
         return title;
     }
 
-    public String getFormattedValue() {
-        return Functions.formatColors(getValue());
-    }
-
     public Material getMaterial() {
         return material;
     }

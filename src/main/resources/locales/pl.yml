@@ -1,7 +1,6 @@
 language:
   plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r"
   title-set: "&aTytuł został pomyślnie ustawiony! Mogą go teraz zobaczyć inni nad twoją głową oraz na czacie!"
-  title-already-set: "&cJuż masz ustawiony ten tytuł!"
   title-removed: "&aTytuł został usunięty znad twojej głowy i z czatu!"
   no-permission: "&cBrak uprawnień!"
   no-title-selected: "&cNie masz wybranego żadnego tytułu."
@@ -16,4 +15,3 @@ language:
   unlimited-name-tag-mode-is-enabled: "&cGracze już widzą tytuły nad głowami graczy!"
   currently-selected: "&a&lAKTUALNIE WYBRANY"
   currently-selected-titles-get: "&6Aktualnie wybrany tytuł&f: "
-  update-available: "&aDostępna jest aktualizacja! Kliknij w poniższy link, aby ją pobrać."

@@ -13,7 +13,6 @@
 
 options:
   locale: en
-  check-for-updates: true
   play-sounds: true
   clear-title-on-player-quit: false
   show-title: above_head_chat # In order for this to work, "unlimited-nametag-prefix-suffix-mode" must be enabled in TAB config.yml.

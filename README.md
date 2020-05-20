@@ -9,7 +9,6 @@ You can set custom permissions for certain titles as well.
 - `bucik.titles.reload`
 - `bucik.titles.open`
 - `bucik.titles.debug`
-- `bucik.titles.update.notify`
 
 ### Commands
 `/titles [clear|get|info|reload]`
