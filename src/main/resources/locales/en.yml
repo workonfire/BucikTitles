@@ -1,6 +1,7 @@
 language:
   plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r"
   title-set: "&aThe title has been successfully set! Others can see it above your head and in the chat!"
+  title-already-set: "&cYou already have this title set!"
   title-removed: "&aThe title has been removed from above your head and chat!"
   no-permission: "&cNo permission!"
   no-title-selected: "&cYou have no title selected."
@@ -15,3 +16,4 @@ language:
   unlimited-name-tag-mode-is-enabled: "&cPlayers can already see titles above players' heads!"
   currently-selected: "&a&lCURRENTLY SELECTED"
   currently-selected-titles-get: "&6Current title&f: "
+  update-available: "&aThere's an update available! Click the link below, to download it."

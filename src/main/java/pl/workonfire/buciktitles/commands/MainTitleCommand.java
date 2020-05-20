@@ -26,9 +26,8 @@ public class MainTitleCommand implements CommandExecutor {
                     /* /titles info */
                 } else if (args[0].equalsIgnoreCase("info")) {
                     sender.sendMessage("§c§m--------------\n" +
-                            "§bBucikTitles §6Plugin\n" +
-                            "§6Author: §c§lB§6§lu§e§lt§a§ly§b§l9§3§l3§9§l5\n" +
-                            "§6Version: §b" + Main.version + "\n" +
+                            "§bBucikTitles §6" + Main.version + "\n" +
+                            "§6by §c§lB§6§lu§e§lt§a§ly§b§l9§3§l3§9§l5\n" +
                             "§c§m--------------");
                     /* /titles get */
                 } else if (args[0].equalsIgnoreCase("get")) {
