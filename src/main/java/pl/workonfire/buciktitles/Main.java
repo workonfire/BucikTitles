@@ -9,12 +9,12 @@ import pl.workonfire.buciktitles.managers.ConfigManager;
 /**
  * A very simple plugin for showing titles on chat above players heads that depends on TAB.
  * @author workonfire, aka Buty935
- * @version 1.0.7
+ * @version 1.0.8
  */
 
 public final class Main extends JavaPlugin {
     public static Main plugin;
-    public static final String version = "1.0.7";
+    public static final String version = "1.0.8";
 
     @Override
     public void onEnable() {

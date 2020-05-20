@@ -1,6 +1,7 @@
 language:
   plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r"
   title-set: "&aThe title has been successfully set! Others can see it above your head and in the chat!"
+  title-already-set: "&cYou already have this title set!"
   title-removed: "&aThe title has been removed from above your head and chat!"
   no-permission: "&cNo permission!"
   no-title-selected: "&cYou have no title selected."

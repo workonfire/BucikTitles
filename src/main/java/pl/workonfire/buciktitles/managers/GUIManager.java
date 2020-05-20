@@ -106,14 +106,13 @@ public class GUIManager {
                     ItemStack titleItem = new ItemStack(title.getMaterial());
                     ItemMeta titleItemMeta = titleItem.getItemMeta();
                     if (title.getGUIName() != null) titleItemMeta.setDisplayName(Functions.formatColors(title.getGUIName()));
-                    else titleItemMeta.setDisplayName(Functions.formatColors(title.getValue()));
+                    else titleItemMeta.setDisplayName(title.getFormattedValue());
                     List<String> titleItemLore = new ArrayList<>();
                     if (!title.getLore().isEmpty()) {
                         for (String loreLine : title.getLore())
                             titleItemLore.add(Functions.formatColors(loreLine));
                     }
-                    if (Functions.formatColors(title.getValue())
-                            .equals(Functions.getCurrentUserTitle(player))) {
+                    if (title.getFormattedValue().equals(Functions.getCurrentUserTitle(player))) {
                         titleItemLore.add(ConfigManager.getLanguageVariable("currently-selected"));
                         titleItemMeta.setLore(titleItemLore);
                     }

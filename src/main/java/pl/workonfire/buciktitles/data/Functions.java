@@ -99,12 +99,20 @@ public class Functions {
      */
     public static void setTitle(Player player, String titleID, int page) {
         try {
-            Title titleObject = new Title(titleID, page);
-            TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), titleObject.getValue());
+            Title title = new Title(titleID, page);
+            Sound sound;
             player.closeInventory();
-            player.sendMessage(getPrefixedLanguageVariable("title-set"));
+            if (!getCurrentUserTitle(player).equals(title.getFormattedValue())) {
+                TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), title.getValue());
+                player.sendMessage(getPrefixedLanguageVariable("title-set"));
+                sound = Sound.ENTITY_LLAMA_SWAG;
+            }
+            else {
+                player.sendMessage(getPrefixedLanguageVariable("title-already-set"));
+                sound = Sound.ENTITY_VILLAGER_NO;
+            }
             if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
-                player.playSound(player.getLocation(), Sound.ENTITY_LLAMA_SWAG, 1.0F, 1.0F);
+                player.playSound(player.getLocation(), sound, 1.0F, 1.0F);
         } catch (Exception exception) {
             handleErrors(player, exception);
         }
