@@ -11,7 +11,7 @@ You can set custom permissions for certain titles as well.
 - `bucik.titles.debug`
 
 ### Commands
-`/titles [clear|info|reload]`
+`/titles [clear|get|info|reload]`
 
 ### Screenshots
 ![Screenshot 1](https://i.imgur.com/qu5rhT3.png)

@@ -104,16 +104,21 @@ public class GUIManager {
                 Title title = new Title(titleID, page);
                 if (player.hasPermission(title.getPermission())) {
                     ItemStack titleItem = new ItemStack(title.getMaterial());
-                    ItemMeta itemMeta = titleItem.getItemMeta();
-                    if (title.getGUIName() != null) itemMeta.setDisplayName(Functions.formatColors(title.getGUIName()));
-                    else itemMeta.setDisplayName(Functions.formatColors(title.getValue()));
+                    ItemMeta titleItemMeta = titleItem.getItemMeta();
+                    if (title.getGUIName() != null) titleItemMeta.setDisplayName(Functions.formatColors(title.getGUIName()));
+                    else titleItemMeta.setDisplayName(Functions.formatColors(title.getValue()));
+                    List<String> titleItemLore = new ArrayList<>();
                     if (!title.getLore().isEmpty()) {
-                        List<String> titleItemLore = new ArrayList<>();
-                        for (String lore_line : title.getLore())
-                            titleItemLore.add(Functions.formatColors(lore_line));
-                        itemMeta.setLore(titleItemLore);
+                        for (String loreLine : title.getLore())
+                            titleItemLore.add(Functions.formatColors(loreLine));
                     }
-                    titleItem.setItemMeta(itemMeta);
+                    if (Functions.formatColors(title.getValue())
+                            .equals(Functions.getCurrentUserTitle(player))) {
+                        titleItemLore.add(ConfigManager.getLanguageVariable("currently-selected"));
+                        titleItemMeta.setLore(titleItemLore);
+                    }
+                    titleItemMeta.setLore(titleItemLore);
+                    titleItem.setItemMeta(titleItemMeta);
                     if (title.getAmount() != 0) titleItem.setAmount(title.getAmount());
                     if (title.getTexture() != null)
                         titleItem = Functions.getTexturedHead(titleItem, title.getTexture(), title.getGUIName());
@@ -125,8 +130,8 @@ public class GUIManager {
             gui.addPane(titlesPane);
             gui.show(player);
 
-        } catch (Exception e) {
-            Functions.handleErrors(player, e);
+        } catch (Exception exception) {
+            Functions.handleErrors(player, exception);
         }
     }
 }

@@ -10,47 +10,56 @@ import pl.workonfire.buciktitles.data.Functions;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 import pl.workonfire.buciktitles.managers.GUIManager;
 
-import static pl.workonfire.buciktitles.managers.ConfigManager.getLanguageVariable;
+import static pl.workonfire.buciktitles.managers.ConfigManager.getPrefixedLanguageVariable;
 
 public class MainTitleCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (args.length > 0) {
-            if (args[0].equalsIgnoreCase("reload")) {
-                if (sender.hasPermission("bucik.titles.reload")) {
-                    ConfigManager.reloadConfiguration();
-                    sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("plugin-reloaded"));
-                }
-                else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("no-permission"));
+        try {
+            if (args.length > 0) {
+                    /* /titles reload */
+                if (args[0].equalsIgnoreCase("reload")) {
+                    if (sender.hasPermission("bucik.titles.reload")) {
+                        ConfigManager.reloadConfiguration();
+                        sender.sendMessage(getPrefixedLanguageVariable("plugin-reloaded"));
+                    } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+                    /* /titles info */
+                } else if (args[0].equalsIgnoreCase("info")) {
+                    sender.sendMessage("§c§m--------------\n" +
+                            "§bBucikTitles §6Plugin\n" +
+                            "§6Author: §c§lB§6§lu§e§lt§a§ly§b§l9§3§l3§9§l5\n" +
+                            "§6Version: §b" + Main.version + "\n" +
+                            "§c§m--------------");
+                    /* /titles get */
+                } else if (args[0].equalsIgnoreCase("get")) {
+                    String title = Functions.getCurrentUserTitle((Player) sender);
+                    if (!title.isEmpty()) {
+                        sender.sendMessage(getPrefixedLanguageVariable("currently-selected-titles-get") + title);
+                    } else sender.sendMessage(getPrefixedLanguageVariable("no-title-selected"));
+                    /* /titles enableUnlimitedNameTagMode */
+                } else if (args[0].equalsIgnoreCase("enableUnlimitedNameTagMode")) {
+                    if (sender.hasPermission("bucik.titles.debug")) {
+                        if (!TABAPI.isUnlimitedNameTagModeEnabled()) {
+                            TABAPI.enableUnlimitedNameTagModePermanently();
+                            sender.sendMessage(getPrefixedLanguageVariable("unlimited-name-tag-mode-has-been-enabled"));
+                        } else
+                            sender.sendMessage(getPrefixedLanguageVariable("unlimited-name-tag-mode-is-enabled"));
+                    } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+                } else if (args[0].equalsIgnoreCase("clear")) Functions.takeOff((Player) sender, false);
+                else sender.sendMessage(getPrefixedLanguageVariable("subcommand-does-not-exist"));
+                /* /titles */
+            } else {
+                if (sender.hasPermission("bucik.titles.open")) {
+                    if (!TABAPI.isUnlimitedNameTagModeEnabled() && sender.hasPermission("bucik.titles.debug"))
+                        sender.sendMessage(getPrefixedLanguageVariable("unlimited-name-tag-mode-not-enabled"));
+                    if (sender instanceof Player) GUIManager.showUserInterface(Main.plugin, (Player) sender, 1);
+                    else
+                        sender.sendMessage(getPrefixedLanguageVariable("cannot-open-from-console"));
+                } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
             }
-            else if (args[0].equalsIgnoreCase("info")) {
-                sender.sendMessage("§c§m--------------\n" +
-                        "§bBucikTitles §6Plugin\n" +
-                        "§6Author: §c§lB§6§lu§e§lt§a§ly§b§l9§3§l3§9§l5\n" +
-                        "§6Version: §b" + Main.version + "\n" +
-                        "§c§m--------------");
-            }
-            else if (args[0].equalsIgnoreCase("enableUnlimitedNameTagMode")) {
-                if (sender.hasPermission("bucik.titles.debug")) {
-                    if (!TABAPI.isUnlimitedNameTagModeEnabled()) {
-                        TABAPI.enableUnlimitedNameTagModePermanently();
-                        sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("unlimited-name-tag-mode-has-been-enabled"));
-                    }
-                    else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("unlimited-name-tag-mode-is-enabled"));
-                }
-                else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("no-permission"));
-            }
-            else if (args[0].equalsIgnoreCase("clear")) Functions.takeOff((Player) sender, false);
-            else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("subcommand-does-not-exist"));
-        }
-        else {
-            if (sender.hasPermission("bucik.titles.open")) {
-                if (!TABAPI.isUnlimitedNameTagModeEnabled() && sender.hasPermission("bucik.titles.debug"))
-                    sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("unlimited-name-tag-mode-not-enabled"));
-                if (sender instanceof Player) GUIManager.showUserInterface(Main.plugin, (Player) sender, 1);
-                else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("cannot-open-from-console"));
-            }
-            else sender.sendMessage(ConfigManager.getPrefix() + getLanguageVariable("no-permission"));
+            return true;
+        } catch (Exception exception) {
+            Functions.handleErrors((Player) sender, exception);
         }
         return true;
     }

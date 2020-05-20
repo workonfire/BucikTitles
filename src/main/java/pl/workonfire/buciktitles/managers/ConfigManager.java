@@ -50,6 +50,15 @@ public class ConfigManager {
     }
 
     /**
+     * Gets a language variable value from the config including a prefix.
+     * @param variable Unparsed language variable, e.g. "no-permission"
+     * @return Language string with prefix.
+     */
+    public static String getPrefixedLanguageVariable(String variable) {
+        return getPrefix() + " " + Functions.formatColors(getLanguageConfig().getString("language." + variable));
+    }
+
+    /**
      * Gets a global plugin prefix.
      * @return Plugin prefix
      */

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TabCompleter implements org.bukkit.command.TabCompleter {
-    private static final List<String> commands = new ArrayList<>(Arrays.asList("info", "clear"));
+    private static final List<String> commands = new ArrayList<>(Arrays.asList("info", "clear", "get"));
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

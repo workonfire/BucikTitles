@@ -1,5 +1,5 @@
 language:
-  plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r "
+  plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r"
   title-set: "&aThe title has been successfully set! Others can see it above your head and in the chat!"
   title-removed: "&aThe title has been removed from above your head and chat!"
   no-permission: "&cNo permission!"
@@ -13,3 +13,5 @@ language:
   unlimited-name-tag-mode-not-enabled: "&4&lWARNING! &cThe &f&ounlimited-nametag-prefix-suffix-mode &coption is &c&ndisabled&c in the TAB plugin configuration file. Turn it on to allow titles to be displayed above players' heads. You can use the command &f/titles enableUnlimitedNameTagMode&c."
   unlimited-name-tag-mode-has-been-enabled: "&aFrom now on, titles above players' heads will always be visible. This command will no longer be available."
   unlimited-name-tag-mode-is-enabled: "&cPlayers can already see titles above players' heads!"
+  currently-selected: "&a&lCURRENTLY SELECTED"
+  currently-selected-titles-get: "&6Current title&f: "

@@ -1,10 +1,10 @@
 name: BucikTitles
-version: 1.0.6
+version: 1.0.7
 main: pl.workonfire.buciktitles.Main
 api-version: 1.14
 depend: [TAB]
 authors: [Buty935]
-description: A simple plugin for showing player titles
+description: A simple plugin for handling player prefixes
 commands:
   titles:
     aliases: [tytuly, buciktitles]

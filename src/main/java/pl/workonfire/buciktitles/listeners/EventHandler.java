@@ -1,6 +1,5 @@
 package pl.workonfire.buciktitles.listeners;
 
-import me.neznamy.tab.api.TABAPI;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -18,7 +17,7 @@ public class EventHandler implements Listener {
     @org.bukkit.event.EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         try {
-            String selectedTitle = TABAPI.getOriginalValue(event.getPlayer().getUniqueId(), Functions.getHeadTitlePosition());
+            String selectedTitle = Functions.getCurrentUserTitle(event.getPlayer());
             if (!selectedTitle.isEmpty()
                     && ConfigManager.getConfig().getString("options.show-title").equalsIgnoreCase("above_head_chat"))
                 event.setFormat(selectedTitle + "§r " + event.getFormat());

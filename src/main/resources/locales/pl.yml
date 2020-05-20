@@ -1,5 +1,5 @@
 language:
-  plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r "
+  plugin-prefix: "&f&l[&c&lB&6&lu&e&lc&a&li&b&lk&3&lTitles&f&l]&r"
   title-set: "&aTytuł został pomyślnie ustawiony! Mogą go teraz zobaczyć inni nad twoją głową oraz na czacie!"
   title-removed: "&aTytuł został usunięty znad twojej głowy i z czatu!"
   no-permission: "&cBrak uprawnień!"
@@ -13,3 +13,5 @@ language:
   unlimited-name-tag-mode-not-enabled: "&4&lUWAGA! &cW pliku konfiguracyjnym pluginu TAB opcja &f&ounlimited-nametag-prefix-suffix-mode &cjest &c&nwyłączona&c. Włącz ją, by umożliwić wyświetlanie tytułów nad głowami graczy. Możesz użyć komendy &f/titles enableUnlimitedNameTagMode&c."
   unlimited-name-tag-mode-has-been-enabled: "&aOd teraz tytuły nad głowami graczy będą już zawsze widoczne. Ta komenda nie będzie już więcej dostępna."
   unlimited-name-tag-mode-is-enabled: "&cGracze już widzą tytuły nad głowami graczy!"
+  currently-selected: "&a&lAKTUALNIE WYBRANY"
+  currently-selected-titles-get: "&6Aktualnie wybrany tytuł&f: "
