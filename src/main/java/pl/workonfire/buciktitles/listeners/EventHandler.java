@@ -1,5 +1,6 @@
 package pl.workonfire.buciktitles.listeners;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -19,8 +20,10 @@ public class EventHandler implements Listener {
         try {
             String selectedTitle = Functions.getCurrentUserTitle(event.getPlayer());
             if (!selectedTitle.isEmpty()
-                    && ConfigManager.getConfig().getString("options.show-title").equalsIgnoreCase("above_head_chat"))
+                    && ConfigManager.getConfig().getString("options.show-title").equalsIgnoreCase("above_head_chat")) {
+                selectedTitle = PlaceholderAPI.setPlaceholders(event.getPlayer(), selectedTitle).replaceAll("%", "%%");
                 event.setFormat(selectedTitle + "§r " + event.getFormat());
+            }
         } catch (Exception exception) {
             Functions.handleErrors(event.getPlayer(), exception);
         }

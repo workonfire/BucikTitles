@@ -1,8 +1,9 @@
 name: BucikTitles
-version: 1.0.8
+version: 1.0.9
 main: pl.workonfire.buciktitles.Main
 api-version: 1.14
 depend: [TAB]
+softdepend: [PlaceholderAPI]
 authors: [Buty935]
 description: A simple plugin for handling player prefixes
 commands:

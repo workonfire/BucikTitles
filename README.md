@@ -5,10 +5,20 @@ A very simple plugin for showing titles on chat above players heads that depends
 BucikTitles supports multiple GUI pages. One page can contain up to 28 titles.
 You can set custom permissions for certain titles as well.
 
+### Features
+- Titles above player heads (above or below nickname)
+- Chat prefixes
+- [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) support
+- Custom permissions
+- GUI pages
+- Textured heads as GUI elements
+- Temporary titles (title removal on player quit)
+
 ### Permissions
 - `bucik.titles.reload`
 - `bucik.titles.open`
 - `bucik.titles.debug`
+- `bucik.titles.get`
 
 ### Commands
 `/titles [clear|get|info|reload]`
@@ -16,7 +26,9 @@ You can set custom permissions for certain titles as well.
 ### Screenshots
 ![Screenshot 1](https://i.imgur.com/qu5rhT3.png)
 ![Screenshot 2](https://i.imgur.com/98AMdNY.png)
-![Screenshot 3](https://i.imgur.com/Qe52DAq.png)
+![Screenshot 3](https://media.discordapp.net/attachments/710596678486327298/713148507078524969/ezgif.com-video-to-gif_1.gif)
+![Screenshot 4](https://i.imgur.com/Ct4Kfen.png)
+![Screenshot 5](https://i.imgur.com/Qe52DAq.png)
 
 ### Example titles setup (titles.yml)
 ```yaml
@@ -30,13 +42,20 @@ titles:
           material: FEATHER
           amount: 5
           lore:
-         - "&6Róbmy wzium!"
+          - "&6Róbmy wzium!"
       testowy:
         title: "&6[&e&l&oTestowy&6]"
         permission: "bucik.titles.title.testowy"
         gui-item:
           material: BEDROCK
     2:
+      animated:
+        title: "%animations_Rainbow_Hello!%"
+        permission: "bucik.titles.title.animated"
+        gui-item:
+          material: WOODEN_AXE
+          lore:
+          - "Animated!"
       test_title:
         title: "&9[&f&l&oTestTitle&9]"
         permission: "bucik.titles.title.test_title"

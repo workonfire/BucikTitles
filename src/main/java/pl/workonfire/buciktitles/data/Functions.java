@@ -5,6 +5,8 @@ import de.tr7zw.changeme.nbtapi.NBTItem;
 import de.tr7zw.changeme.nbtapi.NBTListCompound;
 import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
+import me.neznamy.tab.shared.placeholders.Placeholder;
+import me.neznamy.tab.shared.placeholders.Placeholders;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -14,6 +16,7 @@ import pl.workonfire.buciktitles.managers.ConfigManager;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.List;
 import java.util.Set;
 
 import static java.lang.String.format;
@@ -103,7 +106,16 @@ public class Functions {
             Sound sound;
             player.closeInventory();
             if (!getCurrentUserTitle(player).equals(title.getFormattedValue())) {
-                TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), title.getValue());
+                // This piece of code below is just temporary. It'll stay there
+                // until NEZNAMY updates TAB.
+                List<String> placeholders = Placeholders.detectAll(title.getRawValue());
+                if (!placeholders.isEmpty())
+                    for (String placeholder : placeholders) {
+                        Placeholders.allUsedPlaceholders.add(placeholder);
+                        Placeholders.categorizeUsedPlaceholder(placeholder);
+                }
+                // End of temporary code
+                TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), title.getRawValue());
                 player.sendMessage(getPrefixedLanguageVariable("title-set"));
                 sound = Sound.ENTITY_LLAMA_SWAG;
             }

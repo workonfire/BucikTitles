@@ -33,12 +33,12 @@ public class Title {
         return titleID;
     }
 
-    public String getValue() {
+    public String getRawValue() {
         return title;
     }
 
     public String getFormattedValue() {
-        return Functions.formatColors(getValue());
+        return Functions.formatColors(getRawValue());
     }
 
     public Material getMaterial() {

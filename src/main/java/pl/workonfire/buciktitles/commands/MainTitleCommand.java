@@ -1,5 +1,6 @@
 package pl.workonfire.buciktitles.commands;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.neznamy.tab.api.TABAPI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,18 +24,24 @@ public class MainTitleCommand implements CommandExecutor {
                         ConfigManager.reloadConfiguration();
                         sender.sendMessage(getPrefixedLanguageVariable("plugin-reloaded"));
                     } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+
                     /* /titles info */
                 } else if (args[0].equalsIgnoreCase("info")) {
                     sender.sendMessage("§c§m--------------\n" +
                             "§bBucikTitles §6" + Main.version + "\n" +
                             "§6by §c§lB§6§lu§e§lt§a§ly§b§l9§3§l3§9§l5\n" +
                             "§c§m--------------");
+
                     /* /titles get */
                 } else if (args[0].equalsIgnoreCase("get")) {
-                    String title = Functions.getCurrentUserTitle((Player) sender);
-                    if (!title.isEmpty()) {
-                        sender.sendMessage(getPrefixedLanguageVariable("currently-selected-titles-get") + title);
-                    } else sender.sendMessage(getPrefixedLanguageVariable("no-title-selected"));
+                    if (sender.hasPermission("bucik.titles.get")) {
+                        String title = PlaceholderAPI.setPlaceholders((Player) sender, Functions.getCurrentUserTitle((Player) sender))
+                                .replaceAll("%", "%%");
+                        if (!title.isEmpty()) {
+                            sender.sendMessage(getPrefixedLanguageVariable("currently-selected-titles-get") + title);
+                        } else sender.sendMessage(getPrefixedLanguageVariable("no-title-selected"));
+                    } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+
                     /* /titles enableUnlimitedNameTagMode */
                 } else if (args[0].equalsIgnoreCase("enableUnlimitedNameTagMode")) {
                     if (sender.hasPermission("bucik.titles.debug")) {
@@ -46,6 +53,7 @@ public class MainTitleCommand implements CommandExecutor {
                     } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
                 } else if (args[0].equalsIgnoreCase("clear")) Functions.takeOff((Player) sender, false);
                 else sender.sendMessage(getPrefixedLanguageVariable("subcommand-does-not-exist"));
+
                 /* /titles */
             } else {
                 if (sender.hasPermission("bucik.titles.open")) {
