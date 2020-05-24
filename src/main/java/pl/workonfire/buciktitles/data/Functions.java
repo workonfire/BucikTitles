@@ -131,6 +131,15 @@ public class Functions {
     }
 
     /**
+     * Sets the raw value of a title for player.
+     * @param player Player representation
+     * @param title Raw title value
+     */
+    public static void setRawTitle(Player player, String title) {
+        TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), title);
+    }
+
+    /**
      * Removes the TAB above name from player.
      * @param player Player representation
      * @param silent Whether to show the info for player or not

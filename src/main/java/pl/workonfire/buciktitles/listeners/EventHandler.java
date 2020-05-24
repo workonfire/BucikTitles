@@ -3,6 +3,7 @@ package pl.workonfire.buciktitles.listeners;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 import pl.workonfire.buciktitles.data.Functions;
@@ -26,6 +27,16 @@ public class EventHandler implements Listener {
             }
         } catch (Exception exception) {
             Functions.handleErrors(event.getPlayer(), exception);
+        }
+    }
+
+    @org.bukkit.event.EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if (!event.getPlayer().hasPlayedBefore()) {
+            String title = ConfigManager.getConfig().getString("options.default-title.title");
+            if (Functions.getCurrentUserTitle(event.getPlayer()).isEmpty()
+                    && ConfigManager.getConfig().getBoolean("options.default-title.enabled")
+                    && title != null) Functions.setRawTitle(event.getPlayer(), title);
         }
     }
 }

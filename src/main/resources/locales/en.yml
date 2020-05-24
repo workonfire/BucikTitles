@@ -13,6 +13,6 @@ language:
   debug-more-info-in-console: "&7&oFor the full error, see the console."
   unlimited-name-tag-mode-not-enabled: "&4&lWARNING! &cThe &f&ounlimited-nametag-prefix-suffix-mode &coption is &c&ndisabled&c in the TAB plugin configuration file. Turn it on to allow titles to be displayed above players' heads. You can use the command &f/titles enableUnlimitedNameTagMode&c."
   unlimited-name-tag-mode-has-been-enabled: "&aFrom now on, titles above players' heads will always be visible. This command will no longer be available."
-  unlimited-name-tag-mode-is-enabled: "&cPlayers can already see titles above players' heads!"
+  unlimited-name-tag-mode-is-enabled: "&cPlayers can already see titles above their heads!"
   currently-selected: "&a&lCURRENTLY SELECTED"
   currently-selected-titles-get: "&6Current title&f: "

@@ -18,6 +18,9 @@ options:
   show-title: above_head_chat # In order for this to work, "unlimited-nametag-prefix-suffix-mode" must be enabled in TAB config.yml.
   title-position: abovename
   debug: false
+  default-title:
+    enabled: false
+    title: "&9[&3DEFAULT&9]"
 
 gui:
   title: "&0>>> &lTITLES &0<<<"

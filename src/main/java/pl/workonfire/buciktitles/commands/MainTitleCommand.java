@@ -51,7 +51,12 @@ public class MainTitleCommand implements CommandExecutor {
                         } else
                             sender.sendMessage(getPrefixedLanguageVariable("unlimited-name-tag-mode-is-enabled"));
                     } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
-                } else if (args[0].equalsIgnoreCase("clear")) Functions.takeOff((Player) sender, false);
+
+                    /* /titles clear */
+                } else if (args[0].equalsIgnoreCase("clear")) {
+                    if (sender.hasPermission("bucik.titles.debug")) Functions.takeOff((Player) sender, false);
+                    else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+                }
                 else sender.sendMessage(getPrefixedLanguageVariable("subcommand-does-not-exist"));
 
                 /* /titles */
