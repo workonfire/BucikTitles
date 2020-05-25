@@ -5,7 +5,6 @@ import de.tr7zw.changeme.nbtapi.NBTItem;
 import de.tr7zw.changeme.nbtapi.NBTListCompound;
 import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
-import me.neznamy.tab.shared.placeholders.Placeholder;
 import me.neznamy.tab.shared.placeholders.Placeholders;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -171,8 +170,14 @@ public class Functions {
      * @return Head title position as EnumProperty
      */
     public static EnumProperty getHeadTitlePosition() {
-        if (getHeadTitlePositionAsString().equals("abovename")) return EnumProperty.ABOVENAME;
-        else return EnumProperty.BELOWNAME;
+        switch (getHeadTitlePositionAsString()) {
+            case "abovename":
+                return EnumProperty.ABOVENAME;
+            case "belowname":
+                return EnumProperty.BELOWNAME;
+            default:
+                return null;
+        }
     }
 
     /**

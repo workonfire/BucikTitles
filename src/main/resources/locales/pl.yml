@@ -14,5 +14,5 @@ language:
   unlimited-name-tag-mode-not-enabled: "&4&lUWAGA! &cW pliku konfiguracyjnym pluginu TAB opcja &f&ounlimited-nametag-prefix-suffix-mode &cjest &c&nwyłączona&c. Włącz ją, by umożliwić wyświetlanie tytułów nad głowami graczy. Możesz użyć komendy &f/titles enableUnlimitedNameTagMode&c."
   unlimited-name-tag-mode-has-been-enabled: "&aOd teraz tytuły nad głowami graczy będą już zawsze widoczne. Ta komenda nie będzie już więcej dostępna."
   unlimited-name-tag-mode-is-enabled: "&cGracze już widzą tytuły nad głowami graczy!"
-  currently-selected: "&a&lAKTUALNIE WYBRANY"
+  currently-selected: "&2>> &a&lAKTUALNIE WYBRANY &2<<"
   currently-selected-titles-get: "&6Aktualnie wybrany tytuł&f: "

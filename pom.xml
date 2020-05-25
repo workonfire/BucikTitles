@@ -96,7 +96,7 @@
             <artifactId>TAB</artifactId>
             <scope>system</scope>
             <version>2.7.4</version>
-            <systemPath>C:/Users/Krystian/Desktop/PAPER/plugins/TAB.jar</systemPath>
+            <systemPath>C:/Users/Krystian/Desktop/paper 1.15 test/plugins/TAB.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.github.stefvanschie.inventoryframework</groupId>
