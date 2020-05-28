@@ -1,5 +1,7 @@
 # BucikTitles
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/69a48b0531964c64a195799e0e2486e6)](https://app.codacy.com/manual/workonfire/BucikTitles?utm_source=github.com&utm_medium=referral&utm_content=workonfire/BucikTitles&utm_campaign=Badge_Grade_Dashboard)
+
 A very simple plugin for showing titles on chat above players heads that depends on [TAB](https://github.com/NEZNAMY/TAB).
 
 BucikTitles supports multiple GUI pages. One page can contain up to 28 titles.
