@@ -64,7 +64,7 @@ public class MainTitleCommand implements CommandExecutor {
                 if (sender.hasPermission("bucik.titles.open")) {
                     if (!TABAPI.isUnlimitedNameTagModeEnabled() && sender.hasPermission("bucik.titles.debug"))
                         sender.sendMessage(getPrefixedLanguageVariable("unlimited-name-tag-mode-not-enabled"));
-                    if (sender instanceof Player) GUIManager.showUserInterface(Main.plugin, (Player) sender, 1);
+                    if (sender instanceof Player) GUIManager.showGUI(Main.plugin, (Player) sender, 1);
                     else
                         sender.sendMessage(getPrefixedLanguageVariable("cannot-open-from-console"));
                 } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));

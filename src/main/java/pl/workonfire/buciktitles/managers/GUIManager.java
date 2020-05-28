@@ -23,7 +23,7 @@ public class GUIManager {
      * @param player Player instance
      * @param page Page number
      */
-    public static void showUserInterface(JavaPlugin plugin, Player player, int page) {
+    public static void showGUI(JavaPlugin plugin, Player player, int page) {
         try {
             /* Initializing the GUI */
             Gui gui = new Gui(plugin, 6, Functions.formatColors(ConfigManager.getConfig().getString("gui.title")));
@@ -53,7 +53,7 @@ public class GUIManager {
                 if (ConfigManager.getConfig().getString("gui.previous-page-button.name") != null)
                     backButtonItemItemMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.previous-page-button.name")));
                 backButtonItem.setItemMeta(backButtonItemItemMeta);
-                backButton.addItem(new GuiItem(backButtonItem, event -> showUserInterface(plugin, player, page - 1)));
+                backButton.addItem(new GuiItem(backButtonItem, event -> showGUI(plugin, player, page - 1)));
                 gui.addPane(backButton);
             }
             else leftPane = new StaticPane(0, 0, 1, 6);
@@ -70,7 +70,7 @@ public class GUIManager {
                 if (ConfigManager.getConfig().getString("gui.next-page-button.name") != null)
                     nextButtonItemMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.next-page-button.name")));
                 nextButtonItem.setItemMeta(nextButtonItemMeta);
-                nextButton.addItem(new GuiItem(nextButtonItem, event -> showUserInterface(plugin, player, nextPage)));
+                nextButton.addItem(new GuiItem(nextButtonItem, event -> showGUI(plugin, player, nextPage)));
                 gui.addPane(nextButton);
             }
             else rightPane = new StaticPane(8, 0, 1, 6);

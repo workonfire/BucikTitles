@@ -1,30 +1,34 @@
 # BucikTitles
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/9d033d4b159d40c6a359a9f53ebc8778)](https://www.codacy.com/manual/workonfire/BucikTitles?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=workonfire/BucikTitles&amp;utm_campaign=Badge_Grade)
+![Last Commit](https://img.shields.io/github/last-commit/workonfire/BucikTitles)
+![License](https://img.shields.io/github/license/workonfire/BucikTitles)
+![Spigot Rating](https://img.shields.io/spiget/rating/79009)
 
 A very simple plugin for showing titles on chat above players heads that depends on [TAB](https://github.com/NEZNAMY/TAB).
 
 BucikTitles supports multiple GUI pages. One page can contain up to 28 titles.
 You can set custom permissions for certain titles as well.
 
-### Features
-- Titles above player heads (above or below nickname)
-- Chat prefixes
-- [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) support
-- Custom permissions
-- GUI pages
-- Textured heads as GUI elements
-- Temporary titles (title removal on player quit)
+## Features
+  - Titles above player heads (above or below nickname)
+  - Chat prefixes
+  - [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) support
+  - Custom permissions
+  - GUI pages
+  - Textured heads as GUI elements
+  - Temporary titles (title removal on player quit)
 
-### Permissions
-- `bucik.titles.reload`
-- `bucik.titles.open`
-- `bucik.titles.debug`
-- `bucik.titles.get`
-- `bucik.titles.clear`
+## Permissions
+  - `bucik.titles.reload`
+  - `bucik.titles.open`
+  - `bucik.titles.debug`
+  - `bucik.titles.get`
+  - `bucik.titles.clear`
 
-### Commands
+## Commands
 `/titles [clear|get|info|reload]`
 
-### Screenshots
+## Screenshots
 ![Screenshot 1](https://i.imgur.com/qu5rhT3.png)
 ![Screenshot 2](https://i.imgur.com/98AMdNY.png)
 ![Screenshot 3](https://media.discordapp.net/attachments/710596678486327298/713148507078524969/ezgif.com-video-to-gif_1.gif)

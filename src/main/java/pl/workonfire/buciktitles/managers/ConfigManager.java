@@ -8,7 +8,9 @@ import pl.workonfire.buciktitles.data.Functions;
 import java.io.File;
 
 public class ConfigManager {
-    private static FileConfiguration config, languageConfig, titlesConfig;
+    private static FileConfiguration config;
+    private static FileConfiguration languageConfig;
+    private static FileConfiguration titlesConfig;
 
     /**
      * Initializes the configuration files.
