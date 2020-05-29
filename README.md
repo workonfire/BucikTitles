@@ -7,23 +7,22 @@
 A very simple plugin for showing titles on chat above players heads that depends on [TAB](https://github.com/NEZNAMY/TAB).
 
 BucikTitles supports multiple GUI pages. One page can contain up to 28 titles.
-You can set custom permissions for certain titles as well.
 
 ## Features
-  - Titles above player heads (above or below nickname)
-  - Chat prefixes
-  - [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) support
-  - Custom permissions
-  - GUI pages
-  - Textured heads as GUI elements
-  - Temporary titles (title removal on player quit)
+-   Titles above player heads (above or below nickname)
+-   Chat prefixes
+-   [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) support
+-   Custom permissions
+-   GUI pages
+-   Textured heads as GUI elements
+-   Temporary titles (title removal on player quit)
 
 ## Permissions
-  - `bucik.titles.reload`
-  - `bucik.titles.open`
-  - `bucik.titles.debug`
-  - `bucik.titles.get`
-  - `bucik.titles.clear`
+-   `bucik.titles.reload`
+-   `bucik.titles.open`
+-   `bucik.titles.debug`
+-   `bucik.titles.get`
+-   `bucik.titles.clear`
 
 ## Commands
 `/titles [clear|get|info|reload]`
