@@ -1,8 +1,7 @@
 package pl.workonfire.buciktitles.data;
 
-import de.tr7zw.changeme.nbtapi.NBTCompound;
-import de.tr7zw.changeme.nbtapi.NBTItem;
-import de.tr7zw.changeme.nbtapi.NBTListCompound;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
 import org.bukkit.Bukkit;
@@ -10,11 +9,14 @@ import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.Field;
 import java.util.Set;
+import java.util.UUID;
 
 import static java.lang.String.format;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getPrefixedLanguageVariable;
@@ -49,22 +51,25 @@ public class Functions {
     }
 
     /**
-     * Returns a textured player head.
+     * Sets a specific texture for a player head.
      * @param head ItemStack representation of a player head
      * @param value Head texture as Base64 value
-     * @param name Item name
      * @return ItemStack representation of a textured player head
      */
-    public static ItemStack getTexturedHead(ItemStack head, String value, String name) {
-        NBTItem nbti = new NBTItem(head);
-
-        NBTCompound skull = nbti.addCompound("SkullOwner");
-        skull.setString("Name", name);
-        skull.setString("Id", "18762a48-d236-474e-becc-071a203abb8a");
-
-        NBTListCompound texture = skull.addCompound("Properties").getCompoundList("textures").addCompound();
-        texture.setString("Value", value);
-        return nbti.getItem();
+    public static ItemStack setHeadTexture(ItemStack head, String value) {
+        SkullMeta meta = (SkullMeta) head.getItemMeta();
+        GameProfile profile = new GameProfile(UUID.randomUUID(), "");
+        profile.getProperties().put("textures", new Property("textures", value));
+        Field profileField;
+        try {
+            profileField = meta.getClass().getDeclaredField("profile");
+            profileField.setAccessible(true);
+            profileField.set(meta, profile);
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException exception) {
+            exception.printStackTrace();
+        }
+        head.setItemMeta(meta);
+        return head;
     }
 
     /**

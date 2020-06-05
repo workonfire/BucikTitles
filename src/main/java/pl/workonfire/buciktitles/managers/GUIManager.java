@@ -119,8 +119,7 @@ public class GUIManager {
                     titleItemMeta.setLore(titleItemLore);
                     titleItem.setItemMeta(titleItemMeta);
                     if (title.getAmount() != 0) titleItem.setAmount(title.getAmount());
-                    if (title.getTexture() != null)
-                        titleItem = Functions.getTexturedHead(titleItem, title.getTexture(), title.getGUIName());
+                    if (title.getTexture() != null) Functions.setHeadTexture(titleItem, title.getTexture());
                     titlesPane.addItem(new GuiItem(titleItem, event -> Functions.setTitle(player, title.getID(), page)));
                 }
             }

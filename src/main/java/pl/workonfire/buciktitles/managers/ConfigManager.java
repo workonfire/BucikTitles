@@ -68,7 +68,6 @@ public class ConfigManager {
         return getLanguageVariable("plugin-prefix");
     }
 
-    // Getters \\
     public static FileConfiguration getConfig() {
         return config;
     }
