@@ -1,11 +1,12 @@
 package pl.workonfire.buciktitles.data;
 
 import org.bukkit.Material;
-import pl.workonfire.buciktitles.managers.ConfigManager;
 
 import java.util.List;
 
-import static java.lang.String.format;
+import static pl.workonfire.buciktitles.data.Functions.getTitleGUIPropertyName;
+import static pl.workonfire.buciktitles.managers.ConfigManager.getTitlesConfig;
+import static pl.workonfire.buciktitles.data.Functions.getTitlePropertyName;
 
 public class Title {
     private final String titleID;
@@ -19,13 +20,13 @@ public class Title {
 
     public Title(String titleID, int page) {
         this.titleID = titleID;
-        title = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.title", page, titleID));
-        permission = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.permission", page, titleID));
-        nameInGUI = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.gui-item.name", page, titleID));
-        material = Material.getMaterial(ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.gui-item.material", page, titleID)));
-        lore = ConfigManager.getTitlesConfig().getStringList(format("titles.pages.%d.%s.gui-item.lore", page, titleID));
-        amount = ConfigManager.getTitlesConfig().getInt(format("titles.pages.%d.%s.gui-item.amount", page, titleID));
-        texture = ConfigManager.getTitlesConfig().getString(format("titles.pages.%d.%s.gui-item.texture", page, titleID));
+        title = getTitlesConfig().getString(getTitlePropertyName(page, titleID, "title"));
+        permission = getTitlesConfig().getString(getTitlePropertyName(page, titleID, "permission"));
+        nameInGUI = getTitlesConfig().getString(getTitleGUIPropertyName(page, titleID, "name"));
+        material = Material.getMaterial(getTitlesConfig().getString(getTitleGUIPropertyName(page, titleID, "material")));
+        lore = getTitlesConfig().getStringList(getTitleGUIPropertyName(page, titleID, "lore"));
+        amount = getTitlesConfig().getInt(getTitleGUIPropertyName(page, titleID, "amount"));
+        texture = getTitlesConfig().getString(getTitleGUIPropertyName(page, titleID, "texture"));
     }
 
     public String getID() {

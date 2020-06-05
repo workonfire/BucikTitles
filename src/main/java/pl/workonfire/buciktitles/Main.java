@@ -24,6 +24,6 @@ public final class Main extends JavaPlugin {
         getCommand("titles").setExecutor(new MainTitleCommand());
         getCommand("titles").setTabCompleter(new TabCompleter());
         getServer().getPluginManager().registerEvents(new EventHandler(), plugin);
-        System.out.println(ConfigManager.getPrefix() + "§fBucikTitles §6" + version + " §fby Buty935. Discord: workonfire#8262");
+        System.out.println(ConfigManager.getPrefix() + " §fBucikTitles §6" + version + " §fby Buty935. Discord: workonfire#8262");
     }
 }

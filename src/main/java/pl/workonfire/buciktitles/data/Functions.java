@@ -181,4 +181,27 @@ public class Functions {
     public static String getHeadTitlePositionAsString() {
         return ConfigManager.getConfig().getString("options.title-position");
     }
+
+    /**
+     * Gets the title property name.
+     * @param page GUI page where the title appers
+     * @param titleID Title ID
+     * @param propertyName Property name
+     * @return Full property name, e.g. titles.pages.1.wzium.permission
+     */
+    public static String getTitlePropertyName(int page, String titleID, String propertyName) {
+        return format("titles.pages.%d.%s.%s", page, titleID, propertyName);
+    }
+
+    /**
+     * Gets the title GUI property name.
+     * @param page GUI page where the title appers
+     * @param titleID Title ID
+     * @param propertyName Property name
+     * @return Full property name, e.g. titles.pages.1.wzium.gui-item.amount
+     */
+    public static String getTitleGUIPropertyName(int page, String titleID, String propertyName) {
+        return format("titles.pages.%d.%s.gui-item.%s", page, titleID, propertyName);
+    }
+
 }
