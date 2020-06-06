@@ -29,7 +29,7 @@ BucikTitles supports multiple GUI pages. One page can contain up to 28 titles.
 
 ## Screenshots
 ![Screenshot 1](https://i.imgur.com/qu5rhT3.png)
-![Screenshot 2](https://i.imgur.com/98AMdNY.png)
+![Screenshot 2](https://i.imgur.com/LPNGeos.png)
 ![Screenshot 3](https://media.discordapp.net/attachments/710596678486327298/713148507078524969/ezgif.com-video-to-gif_1.gif)
 ![Screenshot 4](https://i.imgur.com/Ct4Kfen.png)
 ![Screenshot 5](https://i.imgur.com/Qe52DAq.png)

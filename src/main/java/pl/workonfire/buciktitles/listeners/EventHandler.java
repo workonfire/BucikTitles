@@ -8,7 +8,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 import pl.workonfire.buciktitles.data.Functions;
 
-
 public class EventHandler implements Listener {
 
     @org.bukkit.event.EventHandler

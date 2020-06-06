@@ -19,6 +19,7 @@ public class GUIManager {
 
     /**
      * Shows a title selection interface for a player.
+     * @since 1.0
      * @param plugin Plugin instance
      * @param player Player instance
      * @param page Page number
@@ -112,7 +113,7 @@ public class GUIManager {
                         for (String loreLine : title.getLore())
                             titleItemLore.add(Functions.formatColors(loreLine));
                     }
-                    if (title.getFormattedValue().equals(Functions.getCurrentUserTitle(player))) {
+                    if (title.getRawValue().equals(Functions.getCurrentUserTitle(player))) {
                         titleItemLore.add(ConfigManager.getLanguageVariable("currently-selected"));
                         titleItemMeta.setLore(titleItemLore);
                     }

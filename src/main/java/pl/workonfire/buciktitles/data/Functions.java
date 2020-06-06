@@ -25,6 +25,7 @@ public class Functions {
 
     /**
      * Replaces & to § in order to show colors properly.
+     * @since 1.0
      * @param text String to format
      * @return Formatted string
      */
@@ -34,6 +35,7 @@ public class Functions {
 
     /**
      * Gets access to a list of titles from a specific page.
+     * @since 1.0
      * @param page GUI page
      * @return A set of titles
      */
@@ -43,6 +45,7 @@ public class Functions {
 
     /**
      * Gets a current user title from TAB API.
+     * @since 1.0.7
      * @param player Player object
      * @return Current user title
      */
@@ -52,6 +55,7 @@ public class Functions {
 
     /**
      * Sets a specific texture for a player head.
+     * @since 1.0
      * @param head ItemStack representation of a player head
      * @param value Head texture as Base64 value
      * @return ItemStack representation of a textured player head
@@ -74,6 +78,7 @@ public class Functions {
 
     /**
      * Listens for errors and prints the details.
+     * @since 1.0
      * @param player Player object
      * @param exception Exception object
      */
@@ -98,6 +103,7 @@ public class Functions {
 
     /**
      * Sets the TAB above name for player.
+     * @since 1.0
      * @param player Player representation
      * @param titleID Title ID from config
      * @param page Page number where the title appears
@@ -107,7 +113,7 @@ public class Functions {
             Title title = new Title(titleID, page);
             Sound sound;
             player.closeInventory();
-            if (!getCurrentUserTitle(player).equals(title.getFormattedValue())) {
+            if (!getCurrentUserTitle(player).equals(title.getRawValue())) {
                 TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), title.getRawValue());
                 player.sendMessage(getPrefixedLanguageVariable("title-set"));
                 sound = Sound.ENTITY_LLAMA_SWAG;
@@ -125,6 +131,7 @@ public class Functions {
 
     /**
      * Sets the raw value of a title for player.
+     * @since 1.1.0
      * @param player Player representation
      * @param title Raw title value
      */
@@ -134,6 +141,7 @@ public class Functions {
 
     /**
      * Removes the TAB above name from player.
+     * @since 1.0
      * @param player Player representation
      * @param silent Whether to show the info for player or not
      */
@@ -161,6 +169,7 @@ public class Functions {
 
     /**
      * Gets the position of head title (abovename, belowname)
+     * @since 1.0.6
      * @return Head title position as EnumProperty
      */
     public static EnumProperty getHeadTitlePosition() {
@@ -176,6 +185,7 @@ public class Functions {
 
     /**
      * Gets the position of head title (abovename, belowname)
+     * @since 1.0.6
      * @return Head title position as String
      */
     public static String getHeadTitlePositionAsString() {
@@ -184,6 +194,7 @@ public class Functions {
 
     /**
      * Gets the title property name.
+     * @since 1.1.2
      * @param page GUI page where the title appers
      * @param titleID Title ID
      * @param propertyName Property name
@@ -195,6 +206,7 @@ public class Functions {
 
     /**
      * Gets the title GUI property name.
+     * @since 1.1.2
      * @param page GUI page where the title appers
      * @param titleID Title ID
      * @param propertyName Property name

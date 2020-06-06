@@ -13,6 +13,7 @@ public class ConfigManager {
     private static FileConfiguration titlesConfig;
 
     /**
+     * @since 1.0.5
      * Initializes the configuration files.
      */
     public static void initializeConfiguration() {
@@ -35,6 +36,7 @@ public class ConfigManager {
     }
 
     /**
+     * @since 1.0.5
      * Reloads the configuration files.
      */
     public static void reloadConfiguration() {
@@ -43,6 +45,7 @@ public class ConfigManager {
     }
 
     /**
+     * @since 1.0.1
      * Gets a language variable value from the config.
      * @param variable Unparsed language variable, e.g. "no-permission"
      * @return Language string
@@ -53,6 +56,7 @@ public class ConfigManager {
 
     /**
      * Gets a language variable value from the config including a prefix.
+     * @since 1.0.7
      * @param variable Unparsed language variable, e.g. "no-permission"
      * @return Language string with prefix.
      */
@@ -62,6 +66,7 @@ public class ConfigManager {
 
     /**
      * Gets a global plugin prefix.
+     * @since 1.0.6
      * @return Plugin prefix
      */
     public static String getPrefix() {
