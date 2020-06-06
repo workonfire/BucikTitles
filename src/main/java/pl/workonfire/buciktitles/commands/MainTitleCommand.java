@@ -27,20 +27,27 @@ public class MainTitleCommand implements CommandExecutor {
 
                     /* /titles info */
                 } else if (args[0].equalsIgnoreCase("info")) {
-                    sender.sendMessage("§c§m--------------\n" +
+                    String header;
+                    if (!(sender instanceof Player)) header = "\n§c§m--------------\n"; // for console
+                    else header = "§c§m--------------\n";
+                    sender.sendMessage(header +
                             "§bBucikTitles §6" + Main.version + "\n" +
                             "§6by §c§lB§6§lu§e§lt§a§ly§b§l9§3§l3§9§l5\n" +
+                            "§6§ohttps://github.com/workonfire\n" +
                             "§c§m--------------");
 
                     /* /titles get */
                 } else if (args[0].equalsIgnoreCase("get")) {
-                    if (sender.hasPermission("bucik.titles.get")) {
-                        String title = PlaceholderAPI.setPlaceholders((Player) sender, Functions.getCurrentUserTitle((Player) sender))
-                                .replaceAll("%", "%%");
-                        if (!title.isEmpty()) {
-                            sender.sendMessage(getPrefixedLanguageVariable("currently-selected-titles-get") + title);
-                        } else sender.sendMessage(getPrefixedLanguageVariable("no-title-selected"));
-                    } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+                    if (sender instanceof Player) {
+                        if (sender.hasPermission("bucik.titles.get")) {
+                            String title = PlaceholderAPI.setPlaceholders((Player) sender, Functions.getCurrentUserTitle((Player) sender))
+                                    .replaceAll("%", "%%");
+                            if (!title.isEmpty()) {
+                                sender.sendMessage(getPrefixedLanguageVariable("currently-selected-titles-get") + title);
+                            } else sender.sendMessage(getPrefixedLanguageVariable("no-title-selected"));
+                        } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+                    } else
+                        sender.sendMessage(getPrefixedLanguageVariable("cannot-open-from-console"));
 
                     /* /titles enableUnlimitedNameTagMode */
                 } else if (args[0].equalsIgnoreCase("enableUnlimitedNameTagMode")) {
@@ -54,8 +61,11 @@ public class MainTitleCommand implements CommandExecutor {
 
                     /* /titles clear */
                 } else if (args[0].equalsIgnoreCase("clear")) {
-                    if (sender.hasPermission("bucik.titles.debug")) Functions.takeOff((Player) sender, false);
-                    else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+                    if (sender instanceof Player) {
+                        if (sender.hasPermission("bucik.titles.debug")) Functions.takeOff((Player) sender, false);
+                        else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
+                    } else
+                        sender.sendMessage(getPrefixedLanguageVariable("cannot-open-from-console"));
                 }
                 else sender.sendMessage(getPrefixedLanguageVariable("subcommand-does-not-exist"));
 

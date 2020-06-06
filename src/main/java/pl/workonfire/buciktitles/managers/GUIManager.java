@@ -5,6 +5,7 @@ import com.github.stefvanschie.inventoryframework.GuiItem;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -26,6 +27,10 @@ public class GUIManager {
      */
     public static void showGUI(JavaPlugin plugin, Player player, int page) {
         try {
+            /* Playing the click sound */
+            if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
+                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1.0F, 1.0F);
+
             /* Initializing the GUI */
             Gui gui = new Gui(plugin, 6, Functions.formatColors(ConfigManager.getConfig().getString("gui.title")));
             gui.setOnGlobalClick(event -> event.setCancelled(true));

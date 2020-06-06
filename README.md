@@ -2,7 +2,8 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9d033d4b159d40c6a359a9f53ebc8778)](https://www.codacy.com/manual/workonfire/BucikTitles?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=workonfire/BucikTitles&amp;utm_campaign=Badge_Grade)
 ![Last Commit](https://img.shields.io/github/last-commit/workonfire/BucikTitles)
 ![License](https://img.shields.io/github/license/workonfire/BucikTitles)
-![Spigot Rating](https://img.shields.io/spiget/rating/79009)
+![Spigot Rating](https://img.shields.io/spiget/downloads/79009)
+![Made with love in Poland](https://madewithlove.now.sh/pl?heart=true)
 
 A very simple plugin for showing titles on chat above players heads that depends on [TAB](https://github.com/NEZNAMY/TAB).
 
