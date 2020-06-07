@@ -26,8 +26,7 @@ public class ConfigManager {
             Main.plugin.saveResource("locales/pl.yml", false);
             Main.plugin.saveResource("locales/en.yml", false);
         }
-        if (!titlesConfigFile.exists())
-        {
+        if (!titlesConfigFile.exists()) {
             titlesConfigFile.getParentFile().mkdirs();
             Main.plugin.saveResource("titles.yml", false);
         }

@@ -32,8 +32,11 @@ gui:
       - "&3Bucik"
       - "&aTitles!"
   clear-titles-button:
+    item: BARRIER
     name: "&cRemove the current title"
   previous-page-button:
+    item: ARROW
     name: "&4< &cBack"
   next-page-button:
+    item: ARROW
     name: "&aNext &2>"

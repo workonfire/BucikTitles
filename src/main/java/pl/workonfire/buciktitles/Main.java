@@ -2,6 +2,7 @@ package pl.workonfire.buciktitles;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.workonfire.buciktitles.commands.MainTitleCommand;
+import pl.workonfire.buciktitles.data.Functions;
 import pl.workonfire.buciktitles.data.Metrics;
 import pl.workonfire.buciktitles.listeners.EventHandler;
 import pl.workonfire.buciktitles.listeners.TabCompleter;
@@ -10,12 +11,12 @@ import pl.workonfire.buciktitles.managers.ConfigManager;
 /**
  * A very simple plugin for showing titles on chat above players heads that depends on TAB.
  * @author workonfire, aka Buty935
- * @version 1.1.5
+ * @version 1.1.6
  */
 
 public final class Main extends JavaPlugin {
     public static Main plugin;
-    public static final String version = "1.1.5";
+    public static final String pluginVersion = "1.1.6";
 
     @Override
     public void onEnable() {
@@ -23,9 +24,9 @@ public final class Main extends JavaPlugin {
         plugin.saveDefaultConfig();
         ConfigManager.initializeConfiguration();
         getCommand("titles").setExecutor(new MainTitleCommand());
-        getCommand("titles").setTabCompleter(new TabCompleter());
+        if (!Functions.isServerLegacy()) getCommand("titles").setTabCompleter(new TabCompleter());
         getServer().getPluginManager().registerEvents(new EventHandler(), plugin);
-        System.out.println(ConfigManager.getPrefix() + " §fBucikTitles §6" + version + " §fby Buty935. Discord: §9workonfire#8262");
+        System.out.println(ConfigManager.getPrefix() + " §fBucikTitles §6" + pluginVersion + " §fby Buty935. Discord: §9workonfire#8262");
         if (ConfigManager.getConfig().getBoolean("options.metrics")) {
             int pluginId = 7576;
             new Metrics(plugin, pluginId);

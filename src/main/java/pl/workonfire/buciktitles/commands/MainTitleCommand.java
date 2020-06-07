@@ -11,6 +11,7 @@ import pl.workonfire.buciktitles.data.Functions;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 import pl.workonfire.buciktitles.managers.GUIManager;
 
+import static pl.workonfire.buciktitles.data.Title.getCurrentUserTitle;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getPrefixedLanguageVariable;
 
 public class MainTitleCommand implements CommandExecutor {
@@ -31,7 +32,7 @@ public class MainTitleCommand implements CommandExecutor {
                     if (!(sender instanceof Player)) header = "\n§c§m--------------\n"; // for console
                     else header = "§c§m--------------\n";
                     sender.sendMessage(header +
-                            "§bBucikTitles §6" + Main.version + "\n" +
+                            "§bBucikTitles §6" + Main.pluginVersion + "\n" +
                             "§6by §c§lB§6§lu§e§lt§a§ly§b§l9§3§l3§9§l5\n" +
                             "§6§ohttps://github.com/workonfire\n" +
                             "§c§m--------------");
@@ -40,7 +41,7 @@ public class MainTitleCommand implements CommandExecutor {
                 } else if (args[0].equalsIgnoreCase("get")) {
                     if (sender instanceof Player) {
                         if (sender.hasPermission("bucik.titles.get")) {
-                            String title = PlaceholderAPI.setPlaceholders((Player) sender, Functions.getCurrentUserTitle((Player) sender))
+                            String title = PlaceholderAPI.setPlaceholders((Player) sender, getCurrentUserTitle((Player) sender))
                                     .replaceAll("%", "%%");
                             if (!title.isEmpty()) {
                                 sender.sendMessage(getPrefixedLanguageVariable("currently-selected-titles-get") + title);

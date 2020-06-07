@@ -8,6 +8,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 import pl.workonfire.buciktitles.data.Functions;
 
+import static pl.workonfire.buciktitles.data.Title.getCurrentUserTitle;
+
 public class EventHandler implements Listener {
 
     @org.bukkit.event.EventHandler
@@ -18,7 +20,7 @@ public class EventHandler implements Listener {
     @org.bukkit.event.EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         try {
-            String selectedTitle = Functions.getCurrentUserTitle(event.getPlayer());
+            String selectedTitle = getCurrentUserTitle(event.getPlayer());
             if (!selectedTitle.isEmpty()
                     && ConfigManager.getConfig().getString("options.show-title").equalsIgnoreCase("above_head_chat")) {
                 selectedTitle = PlaceholderAPI.setPlaceholders(event.getPlayer(), selectedTitle).replaceAll("%", "%%");
@@ -33,7 +35,7 @@ public class EventHandler implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (!event.getPlayer().hasPlayedBefore()) {
             String title = ConfigManager.getConfig().getString("options.default-title.title");
-            if (Functions.getCurrentUserTitle(event.getPlayer()).isEmpty()
+            if (getCurrentUserTitle(event.getPlayer()).isEmpty()
                     && ConfigManager.getConfig().getBoolean("options.default-title.enabled")
                     && title != null) Functions.setRawTitle(event.getPlayer(), title);
         }

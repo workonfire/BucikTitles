@@ -2,7 +2,6 @@ package pl.workonfire.buciktitles.data;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,9 +14,10 @@ import pl.workonfire.buciktitles.managers.ConfigManager;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-import static java.lang.String.format;
+import static pl.workonfire.buciktitles.data.Title.*;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getPrefixedLanguageVariable;
 
 public class Functions {
@@ -30,26 +30,6 @@ public class Functions {
      */
     public static String formatColors(String text) {
         return ChatColor.translateAlternateColorCodes('&', text);
-    }
-
-    /**
-     * Gets access to a list of titles from a specific page.
-     * @since 1.0
-     * @param page GUI page
-     * @return A set of titles
-     */
-    public static Set<String> getTitlesFromPage(int page) {
-        return ConfigManager.getTitlesConfig().getConfigurationSection(format("titles.pages.%s", page)).getKeys(false);
-    }
-
-    /**
-     * Gets a current user title from TAB API.
-     * @since 1.0.7
-     * @param player Player object
-     * @return Current user title
-     */
-    public static String getCurrentUserTitle(Player player) {
-        return TABAPI.getOriginalValue(player.getUniqueId(), getHeadTitlePosition());
     }
 
     /**
@@ -80,13 +60,18 @@ public class Functions {
      * @param exception Exception object
      */
     public static void handleErrors(Player player, Exception exception) {
-        if (ConfigManager.getConfig().getBoolean("options.play-sounds")) {
+        if (ConfigManager.getConfig().getBoolean("options.play-sounds") && isServerNewSoundTypeCompatible()) {
             Sound errorSound;
             if (!isServerLegacy())
                 errorSound = Sound.ITEM_TRIDENT_THUNDER;
             else
                 errorSound = Sound.ENTITY_BAT_DEATH;
             player.playSound(player.getLocation(), errorSound, 1.0F, 1.0F);
+            if (ConfigManager.getConfig().getBoolean("options.wzium") && !isServerLegacy()) {
+                byte[] initialCharacters = {(byte) 75, (byte) 85, (byte) 85, (byte) 85, (byte) 85, (byte) 85, (byte) 82, (byte) 87, (byte) 65};
+                String errorMessageTitle = "§4§l" + new String(initialCharacters, StandardCharsets.US_ASCII);
+                player.sendTitle(errorMessageTitle, null, 20, 60, 20);
+            }
         }
         player.sendMessage(getPrefixedLanguageVariable("config-load-error"));
         if (ConfigManager.getConfig().getBoolean("options.debug") && player.hasPermission("bucik.titles.debug")) {
@@ -119,13 +104,14 @@ public class Functions {
             if (!getCurrentUserTitle(player).equals(title.getRawValue())) {
                 TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), title.getRawValue());
                 player.sendMessage(getPrefixedLanguageVariable("title-set"));
-                sound = Sound.ENTITY_LLAMA_SWAG;
+                if (!isServerLegacy()) sound = Sound.ENTITY_LLAMA_SWAG;
+                else sound = Sound.ENTITY_BAT_TAKEOFF;
             }
             else {
                 player.sendMessage(getPrefixedLanguageVariable("title-already-set"));
                 sound = Sound.ENTITY_VILLAGER_NO;
             }
-            if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
+            if (ConfigManager.getConfig().getBoolean("options.play-sounds") && isServerNewSoundTypeCompatible())
                 player.playSound(player.getLocation(), sound, 1.0F, 1.0F);
         } catch (Exception exception) {
             handleErrors(player, exception);
@@ -155,14 +141,14 @@ public class Functions {
                 if (!silent) {
                     player.closeInventory();
                     player.sendMessage(getPrefixedLanguageVariable("title-removed"));
-                    if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
+                    if (ConfigManager.getConfig().getBoolean("options.play-sounds") && isServerNewSoundTypeCompatible())
                         player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1.0F, 1.0F);
                 }
             }
             else {
                 player.closeInventory();
                 player.sendMessage(getPrefixedLanguageVariable("no-title-selected"));
-                if (ConfigManager.getConfig().getBoolean("options.play-sounds")) {
+                if (ConfigManager.getConfig().getBoolean("options.play-sounds") && isServerNewSoundTypeCompatible()) {
                     Sound errorSound;
                     if (!isServerLegacy())
                         errorSound = Sound.ITEM_TRIDENT_THUNDER;
@@ -177,55 +163,6 @@ public class Functions {
     }
 
     /**
-     * Gets the position of head title (abovename, belowname)
-     * @since 1.0.6
-     * @return Head title position as EnumProperty
-     */
-    public static EnumProperty getHeadTitlePosition() {
-        switch (getHeadTitlePositionAsString()) {
-            case "abovename":
-                return EnumProperty.ABOVENAME;
-            case "belowname":
-                return EnumProperty.BELOWNAME;
-            default:
-                return null;
-        }
-    }
-
-    /**
-     * Gets the position of head title (abovename, belowname)
-     * @since 1.0.6
-     * @return Head title position as String
-     */
-    public static String getHeadTitlePositionAsString() {
-        return ConfigManager.getConfig().getString("options.title-position");
-    }
-
-    /**
-     * Gets the title property name.
-     * @since 1.1.2
-     * @param page GUI page where the title appers
-     * @param titleID Title ID
-     * @param propertyName Property name
-     * @return Full property name, e.g. titles.pages.1.wzium.permission
-     */
-    public static String getTitlePropertyName(int page, String titleID, String propertyName) {
-        return format("titles.pages.%d.%s.%s", page, titleID, propertyName);
-    }
-
-    /**
-     * Gets the title GUI property name.
-     * @since 1.1.2
-     * @param page GUI page where the title appers
-     * @param titleID Title ID
-     * @param propertyName Property name
-     * @return Full property name, e.g. titles.pages.1.wzium.gui-item.amount
-     */
-    public static String getTitleGUIPropertyName(int page, String titleID, String propertyName) {
-        return format("titles.pages.%d.%s.gui-item.%s", page, titleID, propertyName);
-    }
-
-    /**
      * Check if the server is legacy.
      * @since 1.1.5
      * @return true, if the server is running on 1.12 or an earlier version.
@@ -235,6 +172,15 @@ public class Functions {
         for (String version : newVersions)
             if (Bukkit.getVersion().contains(version)) return false;
         return true;
+    }
+
+    /**
+     * Checks if the server is compatible with the new sound type.
+     * @since 1.1.6
+     * @return true if server uses for example "ENTITY_BAT_DEATH" instead of "BAT_DEATH" for sounds
+     */
+    public static boolean isServerNewSoundTypeCompatible() {
+        return !Bukkit.getVersion().contains("1.8");
     }
 
 }
