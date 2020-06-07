@@ -15,8 +15,7 @@ import pl.workonfire.buciktitles.managers.ConfigManager;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 import static java.lang.String.format;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getPrefixedLanguageVariable;
@@ -58,9 +57,8 @@ public class Functions {
      * @since 1.0
      * @param head ItemStack representation of a player head
      * @param value Head texture as Base64 value
-     * @return ItemStack representation of a textured player head
      */
-    public static ItemStack setHeadTexture(ItemStack head, String value) {
+    public static void setHeadTexture(ItemStack head, String value) {
         SkullMeta meta = (SkullMeta) head.getItemMeta();
         GameProfile profile = new GameProfile(UUID.randomUUID(), "");
         profile.getProperties().put("textures", new Property("textures", value));
@@ -73,7 +71,6 @@ public class Functions {
             exception.printStackTrace();
         }
         head.setItemMeta(meta);
-        return head;
     }
 
     /**
@@ -83,8 +80,14 @@ public class Functions {
      * @param exception Exception object
      */
     public static void handleErrors(Player player, Exception exception) {
-        if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
-            player.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, 1.0F, 1.0F);
+        if (ConfigManager.getConfig().getBoolean("options.play-sounds")) {
+            Sound errorSound;
+            if (!isServerLegacy())
+                errorSound = Sound.ITEM_TRIDENT_THUNDER;
+            else
+                errorSound = Sound.ENTITY_BAT_DEATH;
+            player.playSound(player.getLocation(), errorSound, 1.0F, 1.0F);
+        }
         player.sendMessage(getPrefixedLanguageVariable("config-load-error"));
         if (ConfigManager.getConfig().getBoolean("options.debug") && player.hasPermission("bucik.titles.debug")) {
             player.sendMessage(getPrefixedLanguageVariable("config-load-error-debug-header"));
@@ -159,8 +162,14 @@ public class Functions {
             else {
                 player.closeInventory();
                 player.sendMessage(getPrefixedLanguageVariable("no-title-selected"));
-                if (ConfigManager.getConfig().getBoolean("options.play-sounds"))
-                    player.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, 0.5F, 1.8F);
+                if (ConfigManager.getConfig().getBoolean("options.play-sounds")) {
+                    Sound errorSound;
+                    if (!isServerLegacy())
+                        errorSound = Sound.ITEM_TRIDENT_THUNDER;
+                    else
+                        errorSound = Sound.ENTITY_BAT_DEATH;
+                    player.playSound(player.getLocation(), errorSound, 0.5F, 1.8F);
+                }
             }
         } catch (Exception exception) {
             handleErrors(player, exception);
@@ -214,6 +223,18 @@ public class Functions {
      */
     public static String getTitleGUIPropertyName(int page, String titleID, String propertyName) {
         return format("titles.pages.%d.%s.gui-item.%s", page, titleID, propertyName);
+    }
+
+    /**
+     * Check if the server is legacy.
+     * @since 1.1.5
+     * @return true, if the server is running on 1.12 or an earlier version.
+     */
+    public static boolean isServerLegacy() {
+        List<String> newVersions = new ArrayList<>(Arrays.asList("1.13", "1.14", "1.15"));
+        for (String version : newVersions)
+            if (Bukkit.getVersion().contains(version)) return false;
+        return true;
     }
 
 }
