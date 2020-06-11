@@ -2,10 +2,11 @@ package pl.workonfire.buciktitles.managers;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import pl.workonfire.buciktitles.Main;
 import pl.workonfire.buciktitles.data.Functions;
 
 import java.io.File;
+
+import static pl.workonfire.buciktitles.Main.getPlugin;
 
 public class ConfigManager {
     private static FileConfiguration config;
@@ -17,18 +18,18 @@ public class ConfigManager {
      * Initializes the configuration files.
      */
     public static void initializeConfiguration() {
-        config = Main.plugin.getConfig();
+        config = getPlugin().getConfig();
         final String languageFileName = config.getString("options.locale");
-        final File languageConfigFile = new File(Main.plugin.getDataFolder() + "/locales", languageFileName + ".yml");
-        final File titlesConfigFile = new File(Main.plugin.getDataFolder(), "titles.yml");
+        final File languageConfigFile = new File(getPlugin().getDataFolder() + "/locales", languageFileName + ".yml");
+        final File titlesConfigFile = new File(getPlugin().getDataFolder(), "titles.yml");
         if (!languageConfigFile.exists()) {
             languageConfigFile.getParentFile().mkdirs();
-            Main.plugin.saveResource("locales/pl.yml", false);
-            Main.plugin.saveResource("locales/en.yml", false);
+            getPlugin().saveResource("locales/pl.yml", false);
+            getPlugin().saveResource("locales/en.yml", false);
         }
         if (!titlesConfigFile.exists()) {
             titlesConfigFile.getParentFile().mkdirs();
-            Main.plugin.saveResource("titles.yml", false);
+            getPlugin().saveResource("titles.yml", false);
         }
         languageConfig = YamlConfiguration.loadConfiguration(languageConfigFile);
         titlesConfig = YamlConfiguration.loadConfiguration(titlesConfigFile);
@@ -39,7 +40,7 @@ public class ConfigManager {
      * Reloads the configuration files.
      */
     public static void reloadConfiguration() {
-        Main.plugin.reloadConfig();
+        getPlugin().reloadConfig();
         initializeConfiguration();
     }
 

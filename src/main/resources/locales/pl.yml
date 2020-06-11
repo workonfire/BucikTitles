@@ -5,7 +5,7 @@ language:
   title-removed: "&2&l✔ &aTytuł został usunięty znad twojej głowy i z czatu!"
   no-permission: "&4&l❌ &cBrak uprawnień!"
   no-title-selected: "&4&l❌ &cNie masz wybranego żadnego tytułu."
-  cannot-open-from-console: "&4&l❌ &cNie możesz wykonać tego polecenia z konsoli."
+  cannot-open-from-console: "&cNie możesz wykonać tego polecenia z konsoli."
   plugin-reloaded: "&2&l✔ &aKonfiguracja została przeładowana."
   subcommand-does-not-exist: "&6&l! &eTa podkomenda nie istnieje."
   config-load-error: "&4&l❌ &4Wystąpił problem podczas wczytywania pliku konfiguracyjnego. &cUpewnij się, że wszystkie pola posiadają &c&npoprawne&c wartości."

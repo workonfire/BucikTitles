@@ -10,6 +10,7 @@ import pl.workonfire.buciktitles.data.Functions;
 
 import static pl.workonfire.buciktitles.data.Title.getCurrentUserTitle;
 
+@SuppressWarnings("ConstantConditions")
 public class EventHandler implements Listener {
 
     @org.bukkit.event.EventHandler
@@ -34,7 +35,7 @@ public class EventHandler implements Listener {
     @org.bukkit.event.EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (!event.getPlayer().hasPlayedBefore()) {
-            String title = ConfigManager.getConfig().getString("options.default-title.title");
+            final String title = ConfigManager.getConfig().getString("options.default-title.title");
             if (getCurrentUserTitle(event.getPlayer()).isEmpty()
                     && ConfigManager.getConfig().getBoolean("options.default-title.enabled")
                     && title != null) Functions.setRawTitle(event.getPlayer(), title);

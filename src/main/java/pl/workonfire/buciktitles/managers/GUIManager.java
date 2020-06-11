@@ -16,6 +16,7 @@ import pl.workonfire.buciktitles.data.Title;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ConstantConditions")
 public class GUIManager {
 
     /**
@@ -33,14 +34,14 @@ public class GUIManager {
                 player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1.0F, 1.0F);
 
             /* Initializing the GUI */
-            Gui gui = new Gui(plugin, 6, Functions.formatColors(ConfigManager.getConfig().getString("gui.title")));
+            final Gui gui = new Gui(plugin, 6, Functions.formatColors(ConfigManager.getConfig().getString("gui.title")));
             gui.setOnGlobalClick(event -> event.setCancelled(true));
             gui.setOnOutsideClick(event -> event.setCancelled(true));
 
             /* Creating border */
-            String outlinePaneMaterialName = Functions.formatColors(ConfigManager.getConfig().getString("gui.outline-pane.item"));
-            ItemStack outlinePaneItem = new ItemStack(Material.getMaterial(outlinePaneMaterialName));
-            ItemMeta outlinePaneItemMeta = outlinePaneItem.getItemMeta();
+            final String outlinePaneMaterialName = Functions.formatColors(ConfigManager.getConfig().getString("gui.outline-pane.item"));
+            final ItemStack outlinePaneItem = new ItemStack(Material.getMaterial(outlinePaneMaterialName));
+            final ItemMeta outlinePaneItemMeta = outlinePaneItem.getItemMeta();
             if (ConfigManager.getConfig().getString("gui.outline-pane.name") != null)
                 outlinePaneItemMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.outline-pane.name")));
             if (!ConfigManager.getConfig().getStringList("gui.outline-pane.lore").isEmpty()) {
@@ -54,10 +55,10 @@ public class GUIManager {
             StaticPane leftPane;
             if (page != 1) {
                 leftPane = new StaticPane(0, 0, 1, 5);
-                OutlinePane backButton = new OutlinePane(0, 5, 1, 1);
-                String backButtonItemName = ConfigManager.getConfig().getString("gui.previous-page-button.item");
-                ItemStack backButtonItem = new ItemStack(Material.getMaterial(backButtonItemName));
-                ItemMeta backButtonItemItemMeta = backButtonItem.getItemMeta();
+                final OutlinePane backButton = new OutlinePane(0, 5, 1, 1);
+                final String backButtonItemName = ConfigManager.getConfig().getString("gui.previous-page-button.item");
+                final ItemStack backButtonItem = new ItemStack(Material.getMaterial(backButtonItemName));
+                final ItemMeta backButtonItemItemMeta = backButtonItem.getItemMeta();
                 if (ConfigManager.getConfig().getString("gui.previous-page-button.name") != null)
                     backButtonItemItemMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.previous-page-button.name")));
                 backButtonItem.setItemMeta(backButtonItemItemMeta);
@@ -69,13 +70,13 @@ public class GUIManager {
             gui.addPane(leftPane);
 
             StaticPane rightPane;
-            int nextPage = page + 1;
+            final int nextPage = page + 1;
             if (ConfigManager.getTitlesConfig().getConfigurationSection("titles.pages").getKeys(false).contains(String.valueOf(nextPage))) {
                 rightPane = new StaticPane(8, 0, 1, 5);
-                OutlinePane nextPageButton = new OutlinePane(8, 5, 1, 1);
-                String nextPageButtonItemName = ConfigManager.getConfig().getString("gui.next-page-button.item");
-                ItemStack nextPageButtonItem = new ItemStack(Material.getMaterial(nextPageButtonItemName));
-                ItemMeta nextPageButtonItemItemMeta = nextPageButtonItem.getItemMeta();
+                final OutlinePane nextPageButton = new OutlinePane(8, 5, 1, 1);
+                final String nextPageButtonItemName = ConfigManager.getConfig().getString("gui.next-page-button.item");
+                final ItemStack nextPageButtonItem = new ItemStack(Material.getMaterial(nextPageButtonItemName));
+                final ItemMeta nextPageButtonItemItemMeta = nextPageButtonItem.getItemMeta();
                 if (ConfigManager.getConfig().getString("gui.next-page-button.name") != null)
                     nextPageButtonItemItemMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.next-page-button.name")));
                 nextPageButtonItem.setItemMeta(nextPageButtonItemItemMeta);
@@ -86,22 +87,22 @@ public class GUIManager {
             rightPane.fillWith(outlinePaneItem);
             gui.addPane(rightPane);
 
-            StaticPane topPane = new StaticPane(1, 0, 7, 1);
+            final StaticPane topPane = new StaticPane(1, 0, 7, 1);
             topPane.fillWith(outlinePaneItem);
             gui.addPane(topPane);
 
-            StaticPane bottomPaneLeft = new StaticPane(1, 5, 3, 1);
+            final StaticPane bottomPaneLeft = new StaticPane(1, 5, 3, 1);
             bottomPaneLeft.fillWith(outlinePaneItem);
             gui.addPane(bottomPaneLeft);
 
-            StaticPane bottomPaneRight = new StaticPane(5, 5, 3, 1);
+            final StaticPane bottomPaneRight = new StaticPane(5, 5, 3, 1);
             bottomPaneRight.fillWith(outlinePaneItem);
             gui.addPane(bottomPaneRight);
 
-            OutlinePane takeOffButton = new OutlinePane(4, 5, 1, 1);
-            String takeOffButtonItemName = ConfigManager.getConfig().getString("gui.clear-titles-button.item");
-            ItemStack takeOffButtonItem = new ItemStack(Material.getMaterial(takeOffButtonItemName));
-            ItemMeta takeOffButtonMeta = takeOffButtonItem.getItemMeta();
+            final OutlinePane takeOffButton = new OutlinePane(4, 5, 1, 1);
+            final String takeOffButtonItemName = ConfigManager.getConfig().getString("gui.clear-titles-button.item");
+            final ItemStack takeOffButtonItem = new ItemStack(Material.getMaterial(takeOffButtonItemName));
+            final ItemMeta takeOffButtonMeta = takeOffButtonItem.getItemMeta();
             if (ConfigManager.getConfig().getString("gui.clear-titles-button.name") != null)
                 takeOffButtonMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.clear-titles-button.name")));
             takeOffButtonItem.setItemMeta(takeOffButtonMeta);
@@ -109,15 +110,15 @@ public class GUIManager {
             gui.addPane(takeOffButton);
 
             /* Showing the titles */
-            OutlinePane titlesPane = new OutlinePane(1, 1, 7, 4);
-            for (String titleID : Title.getTitlesFromPage(page)) {
-                Title title = new Title(titleID, page);
+            final OutlinePane titlesPane = new OutlinePane(1, 1, 7, 4);
+            for (final String titleID : Title.getTitlesFromPage(page)) {
+                final Title title = new Title(titleID, page);
                 if (player.hasPermission(title.getPermission())) {
-                    ItemStack titleItem = new ItemStack(title.getMaterial());
-                    ItemMeta titleItemMeta = titleItem.getItemMeta();
+                    final ItemStack titleItem = new ItemStack(title.getMaterial());
+                    final ItemMeta titleItemMeta = titleItem.getItemMeta();
                     if (title.getGUIName() != null) titleItemMeta.setDisplayName(Functions.formatColors(title.getGUIName()));
                     else titleItemMeta.setDisplayName(title.getFormattedValue());
-                    List<String> titleItemLore = new ArrayList<>();
+                    final List<String> titleItemLore = new ArrayList<>();
                     if (!title.getLore().isEmpty()) {
                         for (String loreLine : title.getLore())
                             titleItemLore.add(Functions.formatColors(loreLine));

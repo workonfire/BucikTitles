@@ -8,4 +8,4 @@ authors: [Buty935]
 description: A simple plugin for handling player prefixes
 commands:
   titles:
-    aliases: [tytuly, buciktitles]
+    aliases: [tytuly, buciktitles, prefixes]

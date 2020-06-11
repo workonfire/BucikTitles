@@ -12,6 +12,7 @@ import java.util.Set;
 import static java.lang.String.format;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getTitlesConfig;
 
+@SuppressWarnings("ConstantConditions")
 public class Title {
     private final String titleID;
     private final String title;

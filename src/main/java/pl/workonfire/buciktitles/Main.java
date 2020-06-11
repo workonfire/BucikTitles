@@ -9,28 +9,41 @@ import pl.workonfire.buciktitles.listeners.TabCompleter;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 
 /**
- * A very simple plugin for showing titles on chat above players heads that depends on TAB.
- * @author workonfire, aka Buty935
+ * A very simple plugin for showing titles on chat and above players heads.
+ * Made with ♥
+ *
+ * @author  workonfire, aka Buty935
  * @version 1.1.6
+ * @since   2020-05-13
  */
 
+@SuppressWarnings("ConstantConditions")
 public final class Main extends JavaPlugin {
     public static Main plugin;
-    public static final String pluginVersion = "1.1.6";
+    public static String pluginVersion;
 
     @Override
     public void onEnable() {
         plugin = this;
-        plugin.saveDefaultConfig();
+        pluginVersion = getPlugin().getDescription().getVersion();
+        getPlugin().saveDefaultConfig();
         ConfigManager.initializeConfiguration();
         getCommand("titles").setExecutor(new MainTitleCommand());
         if (!Functions.isServerLegacy()) getCommand("titles").setTabCompleter(new TabCompleter());
-        getServer().getPluginManager().registerEvents(new EventHandler(), plugin);
-        System.out.println(ConfigManager.getPrefix() + " §fBucikTitles §6" + pluginVersion + " §fby Buty935. Discord: §9workonfire#8262");
+        getServer().getPluginManager().registerEvents(new EventHandler(), getPlugin());
+        System.out.println(ConfigManager.getPrefix() + " §fBucikTitles §6" + getPluginVersion() + " §fby Buty935. Discord: §9workonfire#8262");
         if (ConfigManager.getConfig().getBoolean("options.metrics")) {
-            int pluginId = 7576;
-            new Metrics(plugin, pluginId);
+            final int pluginId = 7576;
+            new Metrics(getPlugin(), pluginId);
             System.out.println(ConfigManager.getPrefix() + " bStats service has been §2enabled§r! Set §6metrics §rto §cfalse §rin §f§nconfig.yml§r in order to disable metrics.");
         }
+    }
+
+    public static Main getPlugin() {
+        return plugin;
+    }
+
+    public static String getPluginVersion() {
+        return pluginVersion;
     }
 }

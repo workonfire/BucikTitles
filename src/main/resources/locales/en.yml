@@ -5,7 +5,7 @@ language:
   title-removed: "&2&l✔ &aThe title has been removed from above your head and chat!"
   no-permission: "&4&l❌ &cNo permission!"
   no-title-selected: "&4&l❌ &cYou have no title selected."
-  cannot-open-from-console: "&4&l❌ &cYou cannot execute this command from the console."
+  cannot-open-from-console: "&cYou cannot execute this command from the console."
   plugin-reloaded: "&2&l✔ &aThe configuration has been reloaded."
   subcommand-does-not-exist: "&6&l! &eThis subcommand does not exist."
   config-load-error: "&4&l❌ &4There was a problem loading the configuration file. &cMake sure all fields have &c&nvalid&c values."

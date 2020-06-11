@@ -32,7 +32,7 @@ public class MainTitleCommand implements CommandExecutor {
                     if (!(sender instanceof Player)) header = "\n§c§m--------------\n"; // for console
                     else header = "§c§m--------------\n";
                     sender.sendMessage(header +
-                            "§bBucikTitles §6" + Main.pluginVersion + "\n" +
+                            "§bBucikTitles §6" + Main.getPluginVersion() + "\n" +
                             "§6by §c§lB§6§lu§e§lt§a§ly§b§l9§3§l3§9§l5\n" +
                             "§6§ohttps://github.com/workonfire\n" +
                             "§c§m--------------");

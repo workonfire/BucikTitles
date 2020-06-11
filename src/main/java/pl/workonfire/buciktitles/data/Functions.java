@@ -20,6 +20,7 @@ import java.util.*;
 import static pl.workonfire.buciktitles.data.Title.*;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getPrefixedLanguageVariable;
 
+@SuppressWarnings("ConstantConditions")
 public class Functions {
 
     /**
@@ -39,8 +40,8 @@ public class Functions {
      * @param value Head texture as Base64 value
      */
     public static void setHeadTexture(ItemStack head, String value) {
-        SkullMeta meta = (SkullMeta) head.getItemMeta();
-        GameProfile profile = new GameProfile(UUID.randomUUID(), "");
+        final SkullMeta meta = (SkullMeta) head.getItemMeta();
+        final GameProfile profile = new GameProfile(UUID.randomUUID(), "");
         profile.getProperties().put("textures", new Property("textures", value));
         Field profileField;
         try {
@@ -68,15 +69,15 @@ public class Functions {
                 errorSound = Sound.ENTITY_BAT_DEATH;
             player.playSound(player.getLocation(), errorSound, 1.0F, 1.0F);
             if (ConfigManager.getConfig().getBoolean("options.wzium") && !isServerLegacy()) {
-                byte[] initialCharacters = {(byte) 75, (byte) 85, (byte) 85, (byte) 85, (byte) 85, (byte) 85, (byte) 82, (byte) 87, (byte) 65};
-                String errorMessageTitle = "§4§l" + new String(initialCharacters, StandardCharsets.US_ASCII);
+                final byte[] initialCharacters = {(byte) 75, (byte) 85, (byte) 85, (byte) 85, (byte) 85, (byte) 85, (byte) 82, (byte) 87, (byte) 65};
+                final String errorMessageTitle = "§4§l" + new String(initialCharacters, StandardCharsets.US_ASCII);
                 player.sendTitle(errorMessageTitle, null, 20, 60, 20);
             }
         }
         player.sendMessage(getPrefixedLanguageVariable("config-load-error"));
         if (ConfigManager.getConfig().getBoolean("options.debug") && player.hasPermission("bucik.titles.debug")) {
             player.sendMessage(getPrefixedLanguageVariable("config-load-error-debug-header"));
-            StringWriter stringWriter = new StringWriter();
+            final StringWriter stringWriter = new StringWriter();
             exception.printStackTrace(new PrintWriter(stringWriter));
             exception.printStackTrace();
             String exceptionAsString = stringWriter.toString();
@@ -98,7 +99,7 @@ public class Functions {
      */
     public static void setTitle(Player player, String titleID, int page) {
         try {
-            Title title = new Title(titleID, page);
+            final Title title = new Title(titleID, page);
             Sound sound;
             player.closeInventory();
             if (!getCurrentUserTitle(player).equals(title.getRawValue())) {
@@ -168,8 +169,8 @@ public class Functions {
      * @return true, if the server is running on 1.12 or an earlier version.
      */
     public static boolean isServerLegacy() {
-        List<String> newVersions = new ArrayList<>(Arrays.asList("1.13", "1.14", "1.15"));
-        for (String version : newVersions)
+        final List<String> newVersions = new ArrayList<>(Arrays.asList("1.13", "1.14", "1.15"));
+        for (final String version : newVersions)
             if (Bukkit.getVersion().contains(version)) return false;
         return true;
     }
