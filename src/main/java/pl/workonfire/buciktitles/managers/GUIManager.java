@@ -120,7 +120,7 @@ public class GUIManager {
                     else titleItemMeta.setDisplayName(title.getFormattedValue());
                     final List<String> titleItemLore = new ArrayList<>();
                     if (!title.getLore().isEmpty()) {
-                        for (String loreLine : title.getLore())
+                        for (final String loreLine : title.getLore())
                             titleItemLore.add(Functions.formatColors(loreLine));
                     }
                     if (title.getRawValue().equals(Title.getCurrentUserTitle(player))) {

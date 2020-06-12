@@ -19,8 +19,8 @@ import pl.workonfire.buciktitles.managers.ConfigManager;
 
 @SuppressWarnings("ConstantConditions")
 public final class Main extends JavaPlugin {
-    public static Main plugin;
-    public static String pluginVersion;
+    private static Main plugin;
+    private static String pluginVersion;
 
     @Override
     public void onEnable() {
