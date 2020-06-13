@@ -61,7 +61,7 @@ public class ConfigManager {
      * @return Language string with prefix.
      */
     public static String getPrefixedLanguageVariable(String variable) {
-        return getPrefix() + " " + Functions.formatColors(getLanguageConfig().getString("language." + variable));
+        return getPrefix() + " " + getLanguageVariable(variable);
     }
 
     /**

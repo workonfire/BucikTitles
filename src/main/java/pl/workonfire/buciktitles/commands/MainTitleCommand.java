@@ -28,7 +28,7 @@ public class MainTitleCommand implements CommandExecutor {
 
                     /* /titles info */
                 } else if (args[0].equalsIgnoreCase("info")) {
-                    String header;
+                    final String header;
                     if (!(sender instanceof Player)) header = "\n§c§m--------------\n"; // for console
                     else header = "§c§m--------------\n";
                     sender.sendMessage(header +
@@ -41,7 +41,7 @@ public class MainTitleCommand implements CommandExecutor {
                 } else if (args[0].equalsIgnoreCase("get")) {
                     if (sender instanceof Player) {
                         if (sender.hasPermission("bucik.titles.get")) {
-                            String title = PlaceholderAPI.setPlaceholders((Player) sender, getCurrentUserTitle((Player) sender))
+                            final String title = PlaceholderAPI.setPlaceholders((Player) sender, getCurrentUserTitle((Player) sender))
                                     .replaceAll("%", "%%");
                             if (!title.isEmpty()) {
                                 sender.sendMessage(getPrefixedLanguageVariable("currently-selected-titles-get") + title);
@@ -75,7 +75,7 @@ public class MainTitleCommand implements CommandExecutor {
                 if (sender.hasPermission("bucik.titles.open")) {
                     if (!TABAPI.isUnlimitedNameTagModeEnabled() && sender.hasPermission("bucik.titles.debug"))
                         sender.sendMessage(getPrefixedLanguageVariable("unlimited-name-tag-mode-not-enabled"));
-                    if (sender instanceof Player) GUIManager.showGUI(Main.plugin, (Player) sender, 1);
+                    if (sender instanceof Player) GUIManager.showGUI(Main.getPlugin(), (Player) sender, 1);
                     else
                         sender.sendMessage(getPrefixedLanguageVariable("cannot-open-from-console"));
                 } else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
