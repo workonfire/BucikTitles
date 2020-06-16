@@ -112,7 +112,7 @@ public class Title {
     }
 
     public String getFormattedValue() {
-        return Functions.formatColors(getRawValue());
+        return Util.formatColors(getRawValue());
     }
 
     public Material getMaterial() {

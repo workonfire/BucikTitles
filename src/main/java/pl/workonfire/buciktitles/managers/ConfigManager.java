@@ -2,13 +2,13 @@ package pl.workonfire.buciktitles.managers;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import pl.workonfire.buciktitles.data.Functions;
+import pl.workonfire.buciktitles.data.Util;
 
 import java.io.File;
 
 import static pl.workonfire.buciktitles.Main.getPlugin;
 
-public class ConfigManager {
+public abstract class ConfigManager {
     private static FileConfiguration config;
     private static FileConfiguration languageConfig;
     private static FileConfiguration titlesConfig;
@@ -51,7 +51,7 @@ public class ConfigManager {
      * @return Language string
      */
     public static String getLanguageVariable(String variable) {
-        return Functions.formatColors(getLanguageConfig().getString("language." + variable));
+        return Util.formatColors(getLanguageConfig().getString("language." + variable));
     }
 
     /**

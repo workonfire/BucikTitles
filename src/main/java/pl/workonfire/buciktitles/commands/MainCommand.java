@@ -7,14 +7,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.workonfire.buciktitles.Main;
-import pl.workonfire.buciktitles.data.Functions;
+import pl.workonfire.buciktitles.data.Util;
 import pl.workonfire.buciktitles.managers.ConfigManager;
 import pl.workonfire.buciktitles.managers.GUIManager;
 
 import static pl.workonfire.buciktitles.data.Title.getCurrentUserTitle;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getPrefixedLanguageVariable;
 
-public class MainTitleCommand implements CommandExecutor {
+public class MainCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         try {
@@ -63,7 +63,7 @@ public class MainTitleCommand implements CommandExecutor {
                     /* /titles clear */
                 } else if (args[0].equalsIgnoreCase("clear")) {
                     if (sender instanceof Player) {
-                        if (sender.hasPermission("bucik.titles.debug")) Functions.takeOff((Player) sender, false);
+                        if (sender.hasPermission("bucik.titles.debug")) Util.takeOff((Player) sender, false);
                         else sender.sendMessage(getPrefixedLanguageVariable("no-permission"));
                     } else
                         sender.sendMessage(getPrefixedLanguageVariable("cannot-open-from-console"));
@@ -82,7 +82,7 @@ public class MainTitleCommand implements CommandExecutor {
             }
             return true;
         } catch (Exception exception) {
-            Functions.handleErrors((Player) sender, exception);
+            Util.handleErrors((Player) sender, exception);
         }
         return true;
     }

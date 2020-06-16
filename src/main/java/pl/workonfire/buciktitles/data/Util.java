@@ -21,7 +21,7 @@ import static pl.workonfire.buciktitles.data.Title.*;
 import static pl.workonfire.buciktitles.managers.ConfigManager.getPrefixedLanguageVariable;
 
 @SuppressWarnings("ConstantConditions")
-public class Functions {
+public abstract class Util {
 
     /**
      * Replaces & to § in order to show colors properly.
@@ -62,11 +62,7 @@ public class Functions {
      */
     public static void handleErrors(Player player, Exception exception) {
         if (ConfigManager.getConfig().getBoolean("options.play-sounds") && isServerNewSoundTypeCompatible()) {
-            Sound errorSound;
-            if (!isServerLegacy())
-                errorSound = Sound.ITEM_TRIDENT_THUNDER;
-            else
-                errorSound = Sound.ENTITY_BAT_DEATH;
+            final Sound errorSound = (!isServerLegacy()) ? Sound.ITEM_TRIDENT_THUNDER : Sound.ENTITY_BAT_DEATH;
             player.playSound(player.getLocation(), errorSound, 1.0F, 1.0F);
             if (ConfigManager.getConfig().getBoolean("options.wzium") && !isServerLegacy()) {
                 final byte[] initialCharacters = {(byte) 75, (byte) 85, (byte) 85, (byte) 85, (byte) 85, (byte) 85, (byte) 82, (byte) 87, (byte) 65};
@@ -105,8 +101,7 @@ public class Functions {
             if (!getCurrentUserTitle(player).equals(title.getRawValue())) {
                 TABAPI.setValuePermanently(player.getUniqueId(), getHeadTitlePosition(), title.getRawValue());
                 player.sendMessage(getPrefixedLanguageVariable("title-set"));
-                if (!isServerLegacy()) sound = Sound.ENTITY_LLAMA_SWAG;
-                else sound = Sound.ENTITY_BAT_TAKEOFF;
+                sound = (!isServerLegacy()) ? Sound.ENTITY_LLAMA_SWAG : Sound.ENTITY_BAT_TAKEOFF;
             }
             else {
                 player.sendMessage(getPrefixedLanguageVariable("title-already-set"));
@@ -150,11 +145,7 @@ public class Functions {
                 player.closeInventory();
                 player.sendMessage(getPrefixedLanguageVariable("no-title-selected"));
                 if (ConfigManager.getConfig().getBoolean("options.play-sounds") && isServerNewSoundTypeCompatible()) {
-                    Sound errorSound;
-                    if (!isServerLegacy())
-                        errorSound = Sound.ITEM_TRIDENT_THUNDER;
-                    else
-                        errorSound = Sound.ENTITY_BAT_DEATH;
+                    final Sound errorSound = (!isServerLegacy()) ? Sound.ITEM_TRIDENT_THUNDER : Sound.ENTITY_BAT_DEATH;
                     player.playSound(player.getLocation(), errorSound, 0.5F, 1.8F);
                 }
             }

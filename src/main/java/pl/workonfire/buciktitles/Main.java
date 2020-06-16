@@ -1,8 +1,8 @@
 package pl.workonfire.buciktitles;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import pl.workonfire.buciktitles.commands.MainTitleCommand;
-import pl.workonfire.buciktitles.data.Functions;
+import pl.workonfire.buciktitles.commands.MainCommand;
+import pl.workonfire.buciktitles.data.Util;
 import pl.workonfire.buciktitles.data.Metrics;
 import pl.workonfire.buciktitles.listeners.EventHandler;
 import pl.workonfire.buciktitles.listeners.TabCompleter;
@@ -28,8 +28,8 @@ public final class Main extends JavaPlugin {
         pluginVersion = getPlugin().getDescription().getVersion();
         getPlugin().saveDefaultConfig();
         ConfigManager.initializeConfiguration();
-        getCommand("titles").setExecutor(new MainTitleCommand());
-        if (!Functions.isServerLegacy()) getCommand("titles").setTabCompleter(new TabCompleter());
+        getCommand("titles").setExecutor(new MainCommand());
+        if (!Util.isServerLegacy()) getCommand("titles").setTabCompleter(new TabCompleter());
         getServer().getPluginManager().registerEvents(new EventHandler(), getPlugin());
         System.out.println(ConfigManager.getPrefix() + " §fBucikTitles §6" + getPluginVersion() + " §fby Buty935. Discord: §9workonfire#8262");
         if (ConfigManager.getConfig().getBoolean("options.metrics")) {

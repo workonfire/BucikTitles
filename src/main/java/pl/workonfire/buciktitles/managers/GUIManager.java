@@ -10,14 +10,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
-import pl.workonfire.buciktitles.data.Functions;
+import pl.workonfire.buciktitles.data.Util;
 import pl.workonfire.buciktitles.data.Title;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ConstantConditions")
-public class GUIManager {
+public abstract class GUIManager {
 
     /**
      * Shows a title selection interface for a player.
@@ -29,25 +29,25 @@ public class GUIManager {
     public static void showGUI(JavaPlugin plugin, Player player, int page) {
         try {
             /* Playing the click sound */
-            if (!Functions.isServerLegacy() && ConfigManager.getConfig().getBoolean("options.play-sounds")
-                    && Functions.isServerNewSoundTypeCompatible())
+            if (!Util.isServerLegacy() && ConfigManager.getConfig().getBoolean("options.play-sounds")
+                    && Util.isServerNewSoundTypeCompatible())
                 player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1.0F, 1.0F);
 
             /* Initializing the GUI */
-            final Gui gui = new Gui(plugin, 6, Functions.formatColors(ConfigManager.getConfig().getString("gui.title")));
+            final Gui gui = new Gui(plugin, 6, Util.formatColors(ConfigManager.getConfig().getString("gui.title")));
             gui.setOnGlobalClick(event -> event.setCancelled(true));
             gui.setOnOutsideClick(event -> event.setCancelled(true));
 
             /* Creating border */
-            final String outlinePaneMaterialName = Functions.formatColors(ConfigManager.getConfig().getString("gui.outline-pane.item"));
+            final String outlinePaneMaterialName = Util.formatColors(ConfigManager.getConfig().getString("gui.outline-pane.item"));
             final ItemStack outlinePaneItem = new ItemStack(Material.getMaterial(outlinePaneMaterialName));
             final ItemMeta outlinePaneItemMeta = outlinePaneItem.getItemMeta();
             if (ConfigManager.getConfig().getString("gui.outline-pane.name") != null)
-                outlinePaneItemMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.outline-pane.name")));
+                outlinePaneItemMeta.setDisplayName(Util.formatColors(ConfigManager.getConfig().getString("gui.outline-pane.name")));
             if (!ConfigManager.getConfig().getStringList("gui.outline-pane.lore").isEmpty()) {
                 List<String> borderLore = new ArrayList<>();
                 for (String loreLine : ConfigManager.getConfig().getStringList("gui.outline-pane.lore"))
-                    borderLore.add(Functions.formatColors(loreLine));
+                    borderLore.add(Util.formatColors(loreLine));
                 outlinePaneItemMeta.setLore(borderLore);
             }
             outlinePaneItem.setItemMeta(outlinePaneItemMeta);
@@ -60,7 +60,7 @@ public class GUIManager {
                 final ItemStack backButtonItem = new ItemStack(Material.getMaterial(backButtonItemName));
                 final ItemMeta backButtonItemItemMeta = backButtonItem.getItemMeta();
                 if (ConfigManager.getConfig().getString("gui.previous-page-button.name") != null)
-                    backButtonItemItemMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.previous-page-button.name")));
+                    backButtonItemItemMeta.setDisplayName(Util.formatColors(ConfigManager.getConfig().getString("gui.previous-page-button.name")));
                 backButtonItem.setItemMeta(backButtonItemItemMeta);
                 backButton.addItem(new GuiItem(backButtonItem, event -> showGUI(plugin, player, page - 1)));
                 gui.addPane(backButton);
@@ -78,7 +78,7 @@ public class GUIManager {
                 final ItemStack nextPageButtonItem = new ItemStack(Material.getMaterial(nextPageButtonItemName));
                 final ItemMeta nextPageButtonItemItemMeta = nextPageButtonItem.getItemMeta();
                 if (ConfigManager.getConfig().getString("gui.next-page-button.name") != null)
-                    nextPageButtonItemItemMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.next-page-button.name")));
+                    nextPageButtonItemItemMeta.setDisplayName(Util.formatColors(ConfigManager.getConfig().getString("gui.next-page-button.name")));
                 nextPageButtonItem.setItemMeta(nextPageButtonItemItemMeta);
                 nextPageButton.addItem(new GuiItem(nextPageButtonItem, event -> showGUI(plugin, player, nextPage)));
                 gui.addPane(nextPageButton);
@@ -104,9 +104,9 @@ public class GUIManager {
             final ItemStack takeOffButtonItem = new ItemStack(Material.getMaterial(takeOffButtonItemName));
             final ItemMeta takeOffButtonMeta = takeOffButtonItem.getItemMeta();
             if (ConfigManager.getConfig().getString("gui.clear-titles-button.name") != null)
-                takeOffButtonMeta.setDisplayName(Functions.formatColors(ConfigManager.getConfig().getString("gui.clear-titles-button.name")));
+                takeOffButtonMeta.setDisplayName(Util.formatColors(ConfigManager.getConfig().getString("gui.clear-titles-button.name")));
             takeOffButtonItem.setItemMeta(takeOffButtonMeta);
-            takeOffButton.addItem(new GuiItem(takeOffButtonItem, event -> Functions.takeOff(player, false)));
+            takeOffButton.addItem(new GuiItem(takeOffButtonItem, event -> Util.takeOff(player, false)));
             gui.addPane(takeOffButton);
 
             /* Showing the titles */
@@ -116,12 +116,12 @@ public class GUIManager {
                 if (player.hasPermission(title.getPermission())) {
                     final ItemStack titleItem = new ItemStack(title.getMaterial());
                     final ItemMeta titleItemMeta = titleItem.getItemMeta();
-                    if (title.getGUIName() != null) titleItemMeta.setDisplayName(Functions.formatColors(title.getGUIName()));
+                    if (title.getGUIName() != null) titleItemMeta.setDisplayName(Util.formatColors(title.getGUIName()));
                     else titleItemMeta.setDisplayName(title.getFormattedValue());
                     final List<String> titleItemLore = new ArrayList<>();
                     if (!title.getLore().isEmpty()) {
                         for (final String loreLine : title.getLore())
-                            titleItemLore.add(Functions.formatColors(loreLine));
+                            titleItemLore.add(Util.formatColors(loreLine));
                     }
                     if (title.getRawValue().equals(Title.getCurrentUserTitle(player))) {
                         titleItemLore.add(ConfigManager.getLanguageVariable("currently-selected"));
@@ -130,8 +130,8 @@ public class GUIManager {
                     titleItemMeta.setLore(titleItemLore);
                     titleItem.setItemMeta(titleItemMeta);
                     if (title.getAmount() != 0) titleItem.setAmount(title.getAmount());
-                    if (title.getTexture() != null) Functions.setHeadTexture(titleItem, title.getTexture());
-                    titlesPane.addItem(new GuiItem(titleItem, event -> Functions.setTitle(player, title.getID(), page)));
+                    if (title.getTexture() != null) Util.setHeadTexture(titleItem, title.getTexture());
+                    titlesPane.addItem(new GuiItem(titleItem, event -> Util.setTitle(player, title.getID(), page)));
                 }
             }
 
@@ -140,7 +140,7 @@ public class GUIManager {
             gui.show(player);
 
         } catch (Exception exception) {
-            Functions.handleErrors(player, exception);
+            Util.handleErrors(player, exception);
         }
     }
 }
