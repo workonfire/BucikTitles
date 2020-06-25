@@ -6,7 +6,7 @@
 
     <groupId>pl.workonfire</groupId>
     <artifactId>BucikTitles</artifactId>
-    <version>1.1.6</version>
+    <version>1.1.7</version>
     <packaging>jar</packaging>
 
     <name>BucikTitles</name>
@@ -83,15 +83,15 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.15.2-R0.1-SNAPSHOT</version>
+            <version>1.16.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.neznamy.tab</groupId>
             <artifactId>TAB</artifactId>
             <scope>system</scope>
-            <version>2.7.4</version>
-            <systemPath>C:/Users/Krystian/Desktop/paper 1.15 test/plugins/TAB.jar</systemPath>
+            <version>2.8.0</version>
+            <systemPath>C:/Users/Krystian/Desktop/Serwery/Spigot 1.16/SERVER/plugins/TAB v2.8.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.github.stefvanschie.inventoryframework</groupId>

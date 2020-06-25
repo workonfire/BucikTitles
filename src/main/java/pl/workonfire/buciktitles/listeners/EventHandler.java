@@ -20,15 +20,14 @@ public class EventHandler implements Listener {
 
     @org.bukkit.event.EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        try {
-            String selectedTitle = getCurrentUserTitle(event.getPlayer());
-            if (!selectedTitle.isEmpty()
-                    && ConfigManager.getConfig().getString("options.show-title").equalsIgnoreCase("above_head_chat")) {
+        String selectedTitle = getCurrentUserTitle(event.getPlayer());
+        if (!selectedTitle.isEmpty()
+                && ConfigManager.getConfig().getString("options.show-title").equalsIgnoreCase("above_head_chat")) {
+            try {
                 selectedTitle = PlaceholderAPI.setPlaceholders(event.getPlayer(), selectedTitle).replaceAll("%", "%%");
-                event.setFormat(selectedTitle + "§r " + event.getFormat());
             }
-        } catch (Exception exception) {
-            Util.handleErrors(event.getPlayer(), exception);
+            catch (NoClassDefFoundError ignored) { }
+            event.setFormat(selectedTitle + "§r " + event.getFormat());
         }
     }
 

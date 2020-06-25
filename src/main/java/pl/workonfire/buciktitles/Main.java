@@ -13,7 +13,7 @@ import pl.workonfire.buciktitles.managers.ConfigManager;
  * Made with ♥
  *
  * @author  workonfire, aka Buty935
- * @version 1.1.6
+ * @version 1.1.7
  * @since   2020-05-13
  */
 

@@ -160,7 +160,7 @@ public abstract class Util {
      * @return true, if the server is running on 1.12 or an earlier version.
      */
     public static boolean isServerLegacy() {
-        final List<String> newVersions = new ArrayList<>(Arrays.asList("1.13", "1.14", "1.15"));
+        final String[] newVersions = {"1.13", "1.14", "1.15", "1.16"};
         for (final String version : newVersions)
             if (Bukkit.getVersion().contains(version)) return false;
         return true;
